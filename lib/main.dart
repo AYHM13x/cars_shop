@@ -1,3 +1,4 @@
+import 'package:car_shop_app/core/utils/route_app/scale_animetion.dart';
 import 'package:car_shop_app/features/_1_home/presentation/views/_1_product_details_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,9 +32,10 @@ class CarShopApp extends StatelessWidget {
       child: MaterialApp(
         onGenerateRoute: (settings) {
           if (settings.name == RouteNamesApp.signUpViewRoute) {
-            return SlideRight(
-              child: const SignUpView(),
-            );
+            return SlideRight(child: const SignUpView());
+          }
+          if (settings.name == RouteNamesApp.homeViewRoute) {
+            return ScaleAnmetion(child: const HomeView());
           }
           // else if(settings.name == RouteNamesApp.homeViewRoute){
 

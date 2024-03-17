@@ -1,4 +1,5 @@
 import 'package:car_shop_app/constans.dart';
+import 'package:car_shop_app/features/_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -18,7 +19,7 @@ class HomeView extends StatelessWidget {
           create: (context) => ProductsCubit(
             getIt.get<GetProductsRepoImpl>(),
           )..getAllProducts(
-              token: kToken,
+              token: BlocProvider.of<AuthCubit>(context).getToken(),
             ),
           child: const HomeViewBody(),
         ),

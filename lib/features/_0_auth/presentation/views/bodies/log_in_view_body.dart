@@ -123,6 +123,7 @@ class _LogInViewBodyState extends State<LogInViewBody> {
                           password: password!,
                         );
                       }
+                      Navigator.pushNamed(context, RouteNamesApp.homeViewRoute);
                     },
                   ),
                 ),

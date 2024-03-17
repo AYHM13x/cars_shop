@@ -33,12 +33,11 @@ class _SignInViewBodyState extends State<SignUpViewBody> {
             isLoading = true;
           });
         } else if (state is AuthFailure) {
-          //showSnackBar(context, state.errMessage);
           setState(() {
             isLoading = false;
           });
         } else if (state is AuthSuccess) {
-          showSnackBar(context, "Welcome: ${state.authResponse.data!.name}");
+          showSnackBar(context, "Register Success");
           setState(() {
             isLoading = false;
           });
