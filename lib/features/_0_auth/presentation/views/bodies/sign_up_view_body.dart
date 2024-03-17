@@ -53,7 +53,7 @@ class _SignInViewBodyState extends State<SignUpViewBody> {
           key: formkey,
           child: ListView(
             children: [
-              const Gap(80.0),
+              const Gap(40.0),
               Container(
                 alignment: Alignment.center,
                 child: Image.asset(

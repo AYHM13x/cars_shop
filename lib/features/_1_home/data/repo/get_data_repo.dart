@@ -3,7 +3,7 @@ import 'package:dio/dio.dart';
 
 import '../../../../core/errors/failures.dart';
 import '../../../../core/utils/api_service.dart';
-import '../all_orders/all_orders.dart';
+import '../../../_2_order/data/all_orders/all_orders.dart';
 import '../all_products/all_products.dart';
 import '../one_product/one_product.dart';
 

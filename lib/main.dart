@@ -2,7 +2,8 @@ import 'package:car_shop_app/features/_1_home/presentation/views/_1_product_deta
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'core/utils/RouteApp.dart';
+import 'core/utils/route_app/animation_route.dart';
+import 'core/utils/route_app/route_names_app.dart';
 import 'core/utils/service_locater.dart';
 import 'core/utils/simple_bloc_observer.dart';
 import 'features/_0_auth/data/repo/auth_repo.dart';
@@ -28,17 +29,29 @@ class CarShopApp extends StatelessWidget {
         getIt.get<AuthRepoImpl>(),
       ),
       child: MaterialApp(
+        onGenerateRoute: (settings) {
+          if (settings.name == RouteNamesApp.signUpViewRoute) {
+            return SlideRight(
+              child: const SignUpView(),
+            );
+          }
+          // else if(settings.name == RouteNamesApp.homeViewRoute){
+
+          // }
+          // Unknown route
+          return MaterialPageRoute(builder: (_) => const LogInView());
+        },
         theme: ThemeData(brightness: Brightness.dark),
         debugShowCheckedModeBanner: false,
         title: "Cars Shop",
         routes: {
-          RouteApp.signInViewRoute: (context) => const LogInView(),
-          RouteApp.signUpViewRoute: (context) => const SignUpView(),
-          RouteApp.homeViewRoute: (context) => const HomeView(),
-          RouteApp.productDetailsViewRoute: (context) =>
+          //RouteNamesApp.signInViewRoute: (context) => const LogInView(),
+          //RouteNamesApp.signUpViewRoute: (context) => const SignUpView(),
+          RouteNamesApp.homeViewRoute: (context) => const HomeView(),
+          RouteNamesApp.productDetailsViewRoute: (context) =>
               const ProductDetailsView(),
         },
-        initialRoute: RouteApp.productDetailsViewRoute,
+        initialRoute: RouteNamesApp.signInViewRoute,
       ),
     );
   }

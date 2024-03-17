@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 
 import '../../features/_0_auth/data/auth_responce/auth_responce.dart';
-import '../../features/_1_home/data/all_orders/all_orders.dart';
+import '../../features/_2_order/data/all_orders/all_orders.dart';
 import '../../features/_1_home/data/all_products/all_products.dart';
 import '../../features/_1_home/data/one_product/one_product.dart';
 

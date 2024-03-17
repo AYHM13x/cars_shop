@@ -1,10 +1,11 @@
+import 'package:car_shop_app/core/utils/route_app/animation_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 import '../../../../../core/utils/AsstesApp.dart';
-import '../../../../../core/utils/RouteApp.dart';
+import '../../../../../core/utils/route_app/route_names_app.dart';
 import '../../../../../core/widgets/custom_elevated_button.dart';
 import '../../../../../core/widgets/custom_text_form_field.dart';
 import '../../../../../core/utils/functions/show_snack_bar.dart';
@@ -138,7 +139,10 @@ class _LogInViewBodyState extends State<LogInViewBody> {
                     const Gap(10.0),
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context, RouteApp.signUpViewRoute);
+                        Navigator.pushNamed(
+                          context,
+                          RouteNamesApp.signUpViewRoute,
+                        );
                       },
                       child: const Text(
                         "SignUp",
