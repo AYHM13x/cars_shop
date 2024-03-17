@@ -35,31 +35,26 @@ class SlideRight extends PageRouteBuilder {
         );
 }
 
-
-
-
-  // const beginRight = 0.0;
-  //           const beginLeft = Offset(-1, 0);
-  //           const end = 1.0;
-  //           var tweenRight = Tween(
-  //             begin: beginRight,
-  //             end: end,
-  //           );
-  //           var curvesAnmition = CurvedAnimation(
-  //             parent: animationOne,
-  //             curve: Curves.linear,
-  //             // reverseCurve: Curves.easeInBack,
-  //           );
-  //           //Animation<Offset> offsetAnimationRight = animationOne.drive(tweenRight);
-  //           var offsetAnimationCurved = tweenRight.animate(curvesAnmition);
-  //             //  return SlideTransition  slide animation
-  //             // ScaleTransition         zoom in animation
-  //           return RotationTransition(         // rotate animation
-  //             turns: offsetAnimationCurved,
-  //             child: child,
-  //           );
-
-
+// const beginRight = 0.0;
+//           const beginLeft = Offset(-1, 0);
+//           const end = 1.0;
+//           var tweenRight = Tween(
+//             begin: beginRight,
+//             end: end,
+//           );
+//           var curvesAnmition = CurvedAnimation(
+//             parent: animationOne,
+//             curve: Curves.linear,
+//             // reverseCurve: Curves.easeInBack,
+//           );
+//           //Animation<Offset> offsetAnimationRight = animationOne.drive(tweenRight);
+//           var offsetAnimationCurved = tweenRight.animate(curvesAnmition);
+//             //  return SlideTransition  slide animation
+//             // ScaleTransition         zoom in animation
+//           return RotationTransition(         // rotate animation
+//             turns: offsetAnimationCurved,
+//             child: child,
+//           );
 
 //Tv animtion
 //  return Align(

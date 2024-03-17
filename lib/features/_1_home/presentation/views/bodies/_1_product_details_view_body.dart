@@ -54,10 +54,6 @@ class ProductDetailsViewBody extends StatelessWidget {
   }
 }
 
-
-
-
-
 // class ProductDetailsViewBody extends StatelessWidget {
 //   const ProductDetailsViewBody({super.key});
 

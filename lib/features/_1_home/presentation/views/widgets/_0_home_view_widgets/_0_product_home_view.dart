@@ -40,10 +40,6 @@ class ProductHomeView extends StatelessWidget {
   }
 }
 
-
-
-
-
 // Image.network(
 //               product.image!,
 //               fit: BoxFit.fill,

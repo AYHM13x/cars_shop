@@ -2,7 +2,7 @@ import 'package:car_shop_app/features/_1_home/presentation/views/_1_product_deta
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'core/utils/route_app/animation_route.dart';
+import 'core/utils/route_app/slide_right_animetion.dart';
 import 'core/utils/route_app/route_names_app.dart';
 import 'core/utils/service_locater.dart';
 import 'core/utils/simple_bloc_observer.dart';

@@ -1,3 +1,4 @@
+import 'package:car_shop_app/core/errors/failure_response/failure_resgister_response.dart';
 import 'package:dio/dio.dart';
 
 abstract class Failure {
@@ -47,7 +48,10 @@ class ServerFailure extends Failure {
     } else if (statusCode == 403) {
       return ServerFailure("!!TURN VPN ON!!");
     } else if (statusCode == 404) {
-      return ServerFailure(response["data"]["error"]);
+      var result = FailureResgisterResponse.fromJson(response);
+      return ServerFailure(
+        result.data.toString(),
+      );
     } else if (statusCode == 500) {
       return ServerFailure('Internal Server Error, Please try later!');
     } else if (statusCode == 501) {
