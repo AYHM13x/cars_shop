@@ -1,4 +1,3 @@
-import 'package:car_shop_app/core/utils/route_app/slide_right_animetion.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -123,8 +122,6 @@ class _LogInViewBodyState extends State<LogInViewBody> {
                           email: email!,
                           password: password!,
                         );
-                      } else {
-                        showSnackBar(context, "there was an error");
                       }
                     },
                   ),

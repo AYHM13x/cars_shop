@@ -33,7 +33,7 @@ class _SignInViewBodyState extends State<SignUpViewBody> {
             isLoading = true;
           });
         } else if (state is AuthFailure) {
-          showSnackBar(context, state.errMessage);
+          //showSnackBar(context, state.errMessage);
           setState(() {
             isLoading = false;
           });
@@ -137,9 +137,6 @@ class _SignInViewBodyState extends State<SignUpViewBody> {
                         password: password!,
                         cpassword: cpassword!,
                       );
-                      Navigator.pop(context);
-                    } else {
-                      showSnackBar(context, "there was an error");
                     }
                   },
                 ),
