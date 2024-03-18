@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/dimensions_of_screen.dart';
+import '../../../../_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
+import '../widgets/_2_sheet_items/rate_item.dart';
 
-class RateProductSheet extends StatelessWidget {
+class RateProductSheet extends StatefulWidget {
   const RateProductSheet({super.key});
 
+  @override
+  State<RateProductSheet> createState() => _RateProductSheetState();
+}
+
+class _RateProductSheetState extends State<RateProductSheet> {
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -24,13 +32,23 @@ class RateProductSheet extends StatelessWidget {
               itemExtent: 75,
               scrollDirection: Axis.horizontal,
               itemCount: 5,
+              padding: EdgeInsets.zero,
               itemBuilder: (content, index) {
                 return Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 3),
                   child: GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      BlocProvider.of<AuthCubit>(context)
+                          .setChossedRateIndex(index);
+                      setState(() {});
+                    },
                     child: RateItem(
                       index: index + 1,
+                      isSelected: BlocProvider.of<AuthCubit>(context)
+                                  .getChossedRateIndex() ==
+                              index
+                          ? true
+                          : false,
                     ),
                   ),
                 );
@@ -38,30 +56,20 @@ class RateProductSheet extends StatelessWidget {
             ),
           ),
           const Gap(16),
+          GestureDetector(
+            onTap: () {
+              BlocProvider.of<AuthCubit>(context).postRate(
+                token: BlocProvider.of<AuthCubit>(context).getToken(),
+                productId: BlocProvider.of<AuthCubit>(context)
+                    .getSelectedProductIndex(),
+                rate:
+                    BlocProvider.of<AuthCubit>(context).getChossedRateIndex() +
+                        1,
+              );
+            },
+            child: const Text("Confirm"),
+          )
         ],
-      ),
-    );
-  }
-}
-
-class RateItem extends StatelessWidget {
-  const RateItem({super.key, required this.index});
-
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      //selected color circle
-      backgroundColor: Colors.white,
-      radius: 29,
-      child: CircleAvatar(
-        backgroundColor: Colors.grey,
-        radius: 25,
-        child: Text(
-          index.toString(),
-          textAlign: TextAlign.center,
-        ),
       ),
     );
   }

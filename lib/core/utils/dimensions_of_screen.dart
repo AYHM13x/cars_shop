@@ -18,10 +18,10 @@ class DimensionsOfScreen {
 
 double responciveHeight(BuildContext context) {
   if (DimensionsOfScreen.getScreenRatio(context) == 1.75) {
-    return DimensionsOfScreen.dimensionsOfHeight(context, 33);
+    return DimensionsOfScreen.dimensionsOfHeight(context, 29.9);
   } else if (DimensionsOfScreen.getScreenRatio(context) == 2.75) {
-    return DimensionsOfScreen.dimensionsOfHeight(context, 47.6);
+    return DimensionsOfScreen.dimensionsOfHeight(context, 44.1);
   } else {
-    return DimensionsOfScreen.dimensionsOfHeight(context, 47.6);
+    return DimensionsOfScreen.dimensionsOfHeight(context, 44.9);
   }
 }
