@@ -23,12 +23,12 @@ class _LogInViewBodyState extends State<LogInViewBody> {
   String? email, password;
 
   double horizentalPadding = 16.0;
-  double verticalPadding = 50.0;
 
   bool isLoading = false;
 
   @override
   Widget build(BuildContext context) {
+    double keyBoardIsShow = MediaQuery.of(context).viewInsets.bottom;
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthLoading) {
@@ -53,6 +53,7 @@ class _LogInViewBodyState extends State<LogInViewBody> {
           padding: EdgeInsets.only(
             left: horizentalPadding,
             right: horizentalPadding,
+            bottom: keyBoardIsShow,
           ),
           child: Form(
             key: formkey,

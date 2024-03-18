@@ -26,6 +26,7 @@ class _SignInViewBodyState extends State<SignUpViewBody> {
 
   @override
   Widget build(BuildContext context) {
+    double keyBoardIsShow = MediaQuery.of(context).viewInsets.bottom;
     return BlocListener<AuthCubit, AuthState>(
       listener: (context, state) {
         if (state is AuthLoading) {
@@ -47,6 +48,7 @@ class _SignInViewBodyState extends State<SignUpViewBody> {
         padding: EdgeInsets.only(
           left: horizentalPadding,
           right: horizentalPadding,
+          bottom: keyBoardIsShow,
         ),
         child: Form(
           key: formkey,
