@@ -15,6 +15,7 @@ class AuthCubit extends Cubit<AuthState> {
   String _token = "";
   String _message = "";
   int _selectedProductIndex = -1;
+  int _chossedRateIndex = -1;
 
   String getName() => _name;
 
@@ -32,11 +33,18 @@ class AuthCubit extends Cubit<AuthState> {
 
   int getSelectedProductIndex() => _selectedProductIndex;
 
+  void setChossedRateIndex(int index) {
+    _chossedRateIndex = index;
+  }
+
+  int getChossedRateIndex() => _chossedRateIndex;
+
   initData() {
     _name = "";
     _token = "";
     _message = "";
     _selectedProductIndex = -1;
+    _chossedRateIndex = -1;
   }
 
   Future<void> logInPostRequest({
@@ -90,6 +98,68 @@ class AuthCubit extends Cubit<AuthState> {
         getData(response);
         emit(
           AuthSuccess(response),
+        );
+      },
+    );
+  }
+
+  Future<void> postComment({
+    required String token,
+    required int productId,
+    required String comment,
+  }) async {
+    _message = "";
+    var result = await authRepo.postCommentToProduct(
+      token: token,
+      productId: productId,
+      comment: comment,
+    );
+
+    result.fold(
+      (failure) {
+        emit(
+          AuthFailure(
+            failure.errMessage,
+          ),
+        );
+      },
+      (commentMessage) {
+        _message = commentMessage["message"]!;
+        emit(
+          AuthSuccessCommentAndRate(
+            commentMessage["message"],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> postRate({
+    required String token,
+    required int productId,
+    required num rate,
+  }) async {
+    _message = "";
+    var result = await authRepo.postRateToProduct(
+      token: token,
+      productId: productId,
+      rate: rate,
+    );
+
+    result.fold(
+      (failure) {
+        emit(
+          AuthFailure(
+            failure.errMessage,
+          ),
+        );
+      },
+      (commentMessage) {
+        _message = commentMessage["message"]!;
+        emit(
+          AuthSuccessCommentAndRate(
+            commentMessage["message"],
+          ),
         );
       },
     );

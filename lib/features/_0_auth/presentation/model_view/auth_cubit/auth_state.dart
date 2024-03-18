@@ -13,6 +13,12 @@ class AuthSuccess extends AuthState {
   AuthSuccess(this.authResponse);
 }
 
+class AuthSuccessCommentAndRate extends AuthState {
+  final String message;
+
+  AuthSuccessCommentAndRate(this.message);
+}
+
 class AuthFailure extends AuthState {
   final String errMessage;
 

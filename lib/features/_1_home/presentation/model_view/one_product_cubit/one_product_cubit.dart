@@ -1,4 +1,4 @@
-import 'package:bloc/bloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:meta/meta.dart';
 
 import '../../../data/one_product/one_product.dart';
@@ -12,10 +12,23 @@ class OneProductCubit extends Cubit<OneProductState> {
   final GetProductsRepo getProductsRepo;
   String _message = "";
   String _token = "";
+  int _chossedRateIndex = -1;
+
+  void initVars() {
+    _message = "";
+    _token = "";
+    _chossedRateIndex = -1;
+  }
 
   String getMesage() => _message;
 
   String getToken() => _token;
+
+  void setChossedRateIndex(int index) {
+    _chossedRateIndex = index;
+  }
+
+  int getChossedRateIndex() => _chossedRateIndex;
 
   Future<void> getOneProduct({
     required String token,
@@ -42,68 +55,6 @@ class OneProductCubit extends Cubit<OneProductState> {
         emit(
           OneProductSuccessProduct(
             getOneproduct,
-          ),
-        );
-      },
-    );
-  }
-
-  Future<void> postComment({
-    required String token,
-    required int productId,
-    required String comment,
-  }) async {
-    _message = "";
-    var result = await getProductsRepo.postCommentToProduct(
-      token: token,
-      productId: productId,
-      comment: comment,
-    );
-
-    result.fold(
-      (failure) {
-        emit(
-          OneProductFailure(
-            failure.errMessage,
-          ),
-        );
-      },
-      (commentMessage) {
-        _message = commentMessage["message"]!;
-        emit(
-          OneProductSuccessCommentAndRate(
-            commentMessage["message"],
-          ),
-        );
-      },
-    );
-  }
-
-  Future<void> postRate({
-    required String token,
-    required int productId,
-    required num rate,
-  }) async {
-    _message = "";
-    var result = await getProductsRepo.postRateToProduct(
-      token: token,
-      productId: productId,
-      rate: rate,
-    );
-
-    result.fold(
-      (failure) {
-        emit(
-          OneProductFailure(
-            failure.errMessage,
-          ),
-        );
-      },
-      (commentMessage) {
-        _message = commentMessage["message"]!;
-        emit(
-          OneProductSuccessCommentAndRate(
-            commentMessage["message"],
           ),
         );
       },
