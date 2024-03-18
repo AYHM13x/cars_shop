@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../sheets/_0_rate_product_sheet.dart';
+
 class AppBarProductdetailsView extends StatelessWidget {
   const AppBarProductdetailsView({super.key});
 
@@ -16,6 +18,30 @@ class AppBarProductdetailsView extends StatelessWidget {
         ),
         Row(
           children: [
+            IconButton(
+              onPressed: () {
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  backgroundColor: Colors.grey.shade800,
+                  context: context,
+                  builder: (context) {
+                    return const SingleChildScrollView(
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8.0),
+                        child: RateProductSheet(),
+                      ),
+                    );
+                  },
+                );
+              },
+              icon: const Icon(
+                Icons.star,
+                size: 28,
+              ),
+            ),
             IconButton(
               onPressed: () {},
               icon: const Icon(
