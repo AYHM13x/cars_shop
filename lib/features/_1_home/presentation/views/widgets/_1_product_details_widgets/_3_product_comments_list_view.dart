@@ -14,7 +14,7 @@ class ProductCommentsView extends StatelessWidget {
       shrinkWrap: true,
       physics: const BouncingScrollPhysics(),
       padding: EdgeInsets.zero,
-      itemCount: 20,
+      itemCount: oneProduct.data!.comments!.length,
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.only(bottom: 4),
