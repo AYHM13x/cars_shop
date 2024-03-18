@@ -14,6 +14,7 @@ class AuthCubit extends Cubit<AuthState> {
   String _name = "";
   String _token = "";
   String _message = "";
+  int _selectedProductIndex = -1;
 
   String getName() => _name;
 
@@ -25,10 +26,17 @@ class AuthCubit extends Cubit<AuthState> {
 
   String getMwssage() => _message;
 
+  void setSelectedProductIndex(int index) {
+    _selectedProductIndex = index;
+  }
+
+  int getSelectedProductIndex() => _selectedProductIndex;
+
   initData() {
     _name = "";
     _token = "";
     _message = "";
+    _selectedProductIndex = -1;
   }
 
   Future<void> logInPostRequest({

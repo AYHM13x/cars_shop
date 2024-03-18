@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-import '../../../../data/all_products/product.dart';
-
 class ProductImageHomeView extends StatelessWidget {
   const ProductImageHomeView({
     super.key,
-    required this.product,
+    required this.imageUrl,
   });
 
-  final ProductAllProducts product;
+  final String imageUrl;
+
+  
 
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: Image.network(
-        product.image!,
+        imageUrl,
         fit: BoxFit.fill,
         filterQuality: FilterQuality.high,
         loadingBuilder: (context, child, loadingProgress) {

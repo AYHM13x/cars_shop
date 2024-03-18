@@ -37,22 +37,22 @@ class CarShopApp extends StatelessWidget {
           if (settings.name == RouteNamesApp.homeViewRoute) {
             return ScaleAnmetion(child: const HomeView());
           }
-          // else if(settings.name == RouteNamesApp.homeViewRoute){
-
-          // }
+          if (settings.name == RouteNamesApp.productDetailsViewRoute) {
+            return ScaleAnmetion(child: const ProductDetailsView());
+          }
           // Unknown route
           return MaterialPageRoute(builder: (_) => const LogInView());
         },
         theme: ThemeData(brightness: Brightness.dark),
         debugShowCheckedModeBanner: false,
         title: "Cars Shop",
-        routes: {
-          //RouteNamesApp.signInViewRoute: (context) => const LogInView(),
-          //RouteNamesApp.signUpViewRoute: (context) => const SignUpView(),
-          RouteNamesApp.homeViewRoute: (context) => const HomeView(),
-          RouteNamesApp.productDetailsViewRoute: (context) =>
-              const ProductDetailsView(),
-        },
+        // routes: {
+        //   //RouteNamesApp.signInViewRoute: (context) => const LogInView(),
+        //   //RouteNamesApp.signUpViewRoute: (context) => const SignUpView(),
+        //   RouteNamesApp.homeViewRoute: (context) => const HomeView(),
+        //   RouteNamesApp.productDetailsViewRoute: (context) =>
+        //       const ProductDetailsView(),
+        // },
         initialRoute: RouteNamesApp.signInViewRoute,
       ),
     );

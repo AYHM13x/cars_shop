@@ -13,24 +13,28 @@ class ProductsCubit extends Cubit<ProductsState> {
   final GetProductsRepo getProductsRepo;
   List<ProductAllProducts> _productsAllProducts = [];
   List<ProductAllProducts> _productsFilteredProducts = [];
+  String _token = "";
   String _message = "";
-  int selectedProductIndex = -1;
 
   List<ProductAllProducts> getAllProductsList() => _productsAllProducts;
 
   List<ProductAllProducts> getFilteredProducts() => _productsFilteredProducts;
+
+  String getToken() => _token;
 
   String getMessage() => _message;
 
   void initData() {
     _productsAllProducts = [];
     _message = "";
+    _token = "";
   }
 
   Future<void> getAllProducts({
     required String token,
   }) async {
     initData();
+    _token = token;
     emit(ProductsLoading());
     var result = await getProductsRepo.getAllProducts(
       token: token,
@@ -61,6 +65,7 @@ class ProductsCubit extends Cubit<ProductsState> {
     required String title,
     required num rate,
   }) async {
+    _token = token;
     emit(ProductsLoading());
     _productsFilteredProducts = [];
     _message = "";

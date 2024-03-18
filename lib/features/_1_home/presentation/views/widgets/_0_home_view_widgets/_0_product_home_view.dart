@@ -16,7 +16,6 @@ class ProductHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // height: 330,
       decoration: BoxDecoration(
         color: Colors.grey.withOpacity(.5),
         borderRadius: BorderRadius.circular(16),
@@ -26,7 +25,7 @@ class ProductHomeView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ProductImageHomeView(product: product),
+          ProductImageHomeView(imageUrl: product.image!),
           const Gap(16),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),

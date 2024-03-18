@@ -10,18 +10,19 @@ class OneProductCubit extends Cubit<OneProductState> {
   OneProductCubit(this.getProductsRepo) : super(OneProductInitial());
 
   final GetProductsRepo getProductsRepo;
-  late OneProduct _oneProduct;
   String _message = "";
+  String _token = "";
 
   String getMesage() => _message;
 
-  OneProduct getOneProductVar() => _oneProduct;
+  String getToken() => _token;
 
   Future<void> getOneProduct({
     required String token,
     required int productId,
   }) async {
     _message = "";
+    _token = token;
     emit(OneProductLoading());
     var result = await getProductsRepo.getOneProductWithDetails(
       token: token,
@@ -37,7 +38,6 @@ class OneProductCubit extends Cubit<OneProductState> {
         );
       },
       (getOneproduct) {
-        _oneProduct = getOneproduct;
         _message = getOneproduct.message!;
         emit(
           OneProductSuccessProduct(
