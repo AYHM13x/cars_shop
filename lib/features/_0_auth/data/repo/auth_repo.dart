@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../core/errors/failures.dart';
 import '../../../../core/utils/api_service.dart';
@@ -119,6 +120,7 @@ class AuthRepoImpl implements AuthRepo {
       return right(data);
     } catch (e) {
       if (e is DioException) {
+        debugPrint("123123123 ${e.toString()}");
         return left(
           ServerFailure.fromDioException(e),
         );

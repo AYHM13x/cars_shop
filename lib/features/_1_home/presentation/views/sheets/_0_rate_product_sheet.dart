@@ -56,19 +56,39 @@ class _RateProductSheetState extends State<RateProductSheet> {
             ),
           ),
           const Gap(16),
-          GestureDetector(
-            onTap: () {
-              BlocProvider.of<AuthCubit>(context).postRate(
-                token: BlocProvider.of<AuthCubit>(context).getToken(),
-                productId: BlocProvider.of<AuthCubit>(context)
-                    .getSelectedProductIndex(),
-                rate:
-                    BlocProvider.of<AuthCubit>(context).getChossedRateIndex() +
-                        1,
-              );
-            },
-            child: const Text("Confirm"),
-          )
+          Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              TextButton(
+                onPressed: () async {
+                  debugPrint(BlocProvider.of<AuthCubit>(context)
+                      .getSelectedProductIndex()
+                      .toString());
+                  if (BlocProvider.of<AuthCubit>(context)
+                          .getChossedRateIndex() !=
+                      -1) {
+                    await BlocProvider.of<AuthCubit>(context).postRate(
+                      token: BlocProvider.of<AuthCubit>(context).getToken(),
+                      productId: BlocProvider.of<AuthCubit>(context)
+                          .getSelectedProductIndex(),
+                      rate: BlocProvider.of<AuthCubit>(context)
+                              .getChossedRateIndex() +
+                          1,
+                    );
+                  }
+                },
+                child: const Text(
+                  "Confirm",
+                  style: TextStyle(
+                    // decoration: TextDecoration.underline,
+                    fontSize: 18,
+                  ),
+                ),
+              ),
+              const Gap(16),
+            ],
+          ),
+          const Gap(22),
         ],
       ),
     );

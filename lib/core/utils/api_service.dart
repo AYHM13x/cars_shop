@@ -145,18 +145,18 @@ class ApiService {
         "Content-Type": "application/json",
         "Authorization": "Bearer $token",
       }),
-      data: [
-        {
-          "key": "product_id",
-          "value": productId,
-          "type": "text",
-        },
-        {
-          "key": "content",
-          "value": comment,
-          "type": "text",
-        },
-      ],
+      // data: [
+      //   {
+      //     "key": "product_id",
+      //     "value": productId,
+      //     "type": "text",
+      //   },
+      //   {
+      //     "key": "content",
+      //     "value": comment,
+      //     "type": "text",
+      //   },
+      // ],
     );
     return response.data;
   }
@@ -167,24 +167,27 @@ class ApiService {
     required String token,
   }) async {
     var response = await _dio.post(
-      "$_baseUrl/rate?$productId=2&rate=$rate",
-      options: Options(headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer $token",
-      }),
-      data: [
-        {
-          "key": "product_id",
-          "value": productId,
-          "type": "text",
+      "$_baseUrl/rate?product_id=$productId&rate=$rate",
+      options: Options(
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": "Bearer $token",
         },
-        {
-          "key": "content",
-          "value": rate,
-          "type": "text",
-        },
-      ],
+      ),
+      // data: [
+      //   {
+      //     "key": "product_id",
+      //     "value": productId,
+      //     "type": "text",
+      //   },
+      //   {
+      //     "key": "content",
+      //     "value": rate,
+      //     "type": "text",
+      //   },
+      // ],
     );
+    debugPrint(response.data.toString());
     return response.data;
   }
 
