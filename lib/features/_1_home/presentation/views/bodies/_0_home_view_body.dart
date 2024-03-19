@@ -10,10 +10,12 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double keyBoardIsShow = MediaQuery.of(context).viewInsets.bottom;
     return Padding(
-      padding: const EdgeInsets.only(
+      padding: EdgeInsets.only(
         left: 16,
         right: 16,
+        bottom: keyBoardIsShow,
       ),
       child: Column(
         children: [
