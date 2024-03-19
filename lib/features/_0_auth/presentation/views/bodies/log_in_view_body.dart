@@ -124,7 +124,11 @@ class _LogInViewBodyState extends State<LogInViewBody> {
                           password: password!,
                         );
                       }
-                      Navigator.pushNamed(context, RouteNamesApp.homeViewRoute);
+                      if (BlocProvider.of<AuthCubit>(context).getToken() !=
+                          "") {
+                        Navigator.pushNamed(
+                            context, RouteNamesApp.homeViewRoute);
+                      }
                     },
                   ),
                 ),
@@ -136,8 +140,8 @@ class _LogInViewBodyState extends State<LogInViewBody> {
                       //style: TextStyle(color: Colors.white),
                     ),
                     const Gap(10.0),
-                    GestureDetector(
-                      onTap: () {
+                    TextButton(
+                      onPressed: () {
                         Navigator.pushNamed(
                           context,
                           RouteNamesApp.signUpViewRoute,

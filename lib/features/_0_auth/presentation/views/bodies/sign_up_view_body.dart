@@ -150,8 +150,8 @@ class _SignInViewBodyState extends State<SignUpViewBody> {
                     //style: TextStyle(color: Colors.white),
                   ),
                   const Gap(10.0),
-                  GestureDetector(
-                    onTap: () {
+                  TextButton(
+                    onPressed: () {
                       Navigator.pop(context);
                     },
                     child: const Text(
