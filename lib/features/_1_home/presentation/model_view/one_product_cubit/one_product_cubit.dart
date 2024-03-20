@@ -13,6 +13,7 @@ class OneProductCubit extends Cubit<OneProductState> {
   String _message = "";
   String _token = "";
   int _chossedRateIndex = -1;
+  int _selectedProductIndex = -1;
 
   void initVars() {
     _message = "";
@@ -30,12 +31,17 @@ class OneProductCubit extends Cubit<OneProductState> {
 
   int getChossedRateIndex() => _chossedRateIndex;
 
+  void setSelectedProductIndex(int index) {
+    _selectedProductIndex = index;
+  }
+
+  int getSelectedProductIndex() => _selectedProductIndex;
+
   Future<void> getOneProduct({
     required String token,
     required int productId,
   }) async {
-    _message = "";
-    _token = token;
+    initVars();
     emit(OneProductLoading());
     var result = await getProductsRepo.getOneProductWithDetails(
       token: token,
@@ -55,6 +61,68 @@ class OneProductCubit extends Cubit<OneProductState> {
         emit(
           OneProductSuccessProduct(
             getOneproduct,
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> postComment({
+    required String token,
+    required int productId,
+    required String comment,
+  }) async {
+    _message = "";
+    var result = await getProductsRepo.postCommentToProduct(
+      token: token,
+      productId: productId,
+      comment: comment,
+    );
+
+    result.fold(
+      (failure) {
+        emit(
+          OneProductFailure(
+            failure.errMessage,
+          ),
+        );
+      },
+      (commentMessage) {
+        _message = commentMessage["message"]!;
+        emit(
+          OneProductSuccessCommentAndRate(
+            commentMessage["message"],
+          ),
+        );
+      },
+    );
+  }
+
+  Future<void> postRate({
+    required String token,
+    required int productId,
+    required num rate,
+  }) async {
+    _message = "";
+    var result = await getProductsRepo.postRateToProduct(
+      token: token,
+      productId: productId,
+      rate: rate,
+    );
+
+    result.fold(
+      (failure) {
+        emit(
+          OneProductFailure(
+            failure.errMessage,
+          ),
+        );
+      },
+      (commentMessage) {
+        _message = commentMessage["message"]!;
+        emit(
+          OneProductSuccessCommentAndRate(
+            commentMessage["message"],
           ),
         );
       },

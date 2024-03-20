@@ -1,5 +1,6 @@
 import 'package:car_shop_app/core/widgets/custom_text_form_field.dart';
 import 'package:car_shop_app/features/_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
+import 'package:car_shop_app/features/_1_home/presentation/model_view/one_product_cubit/one_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -40,14 +41,13 @@ class _CommentProductSheetState extends State<CommentProductSheet> {
               TextButton(
                 onPressed: () async {
                   if (formkey.currentState!.validate()) {
-                    BlocProvider.of<AuthCubit>(context).postComment(
+                    BlocProvider.of<OneProductCubit>(context).postComment(
                       token: BlocProvider.of<AuthCubit>(context).getToken(),
-                      productId: BlocProvider.of<AuthCubit>(context)
+                      productId: BlocProvider.of<OneProductCubit>(context)
                           .getSelectedProductIndex(),
                       comment: comment,
                     );
                     Navigator.pop(context);
-                    //setState(() {});
                   }
                 },
                 child: const Text(

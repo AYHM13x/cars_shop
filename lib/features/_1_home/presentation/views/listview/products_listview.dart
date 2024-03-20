@@ -1,9 +1,9 @@
-import 'package:car_shop_app/features/_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/functions/show_snack_bar.dart';
 import '../../../../../core/utils/route_app/route_names_app.dart';
+import '../../model_view/one_product_cubit/one_product_cubit.dart';
 import '../../model_view/products_cubit/products_cubit.dart';
 import '../widgets/_0_home_view_widgets/_0_product_home_view.dart';
 
@@ -28,7 +28,7 @@ class ProductsListView extends StatelessWidget {
             itemBuilder: (context, index) {
               return GestureDetector(
                 onTap: () {
-                  BlocProvider.of<AuthCubit>(context)
+                  BlocProvider.of<OneProductCubit>(context)
                       .setSelectedProductIndex(index + 1);
                   Navigator.pushNamed(
                       context, RouteNamesApp.productDetailsViewRoute);

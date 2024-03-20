@@ -1,3 +1,4 @@
+import 'package:car_shop_app/features/_1_home/presentation/model_view/one_product_cubit/one_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
@@ -37,13 +38,13 @@ class _RateProductSheetState extends State<RateProductSheet> {
                 padding: const EdgeInsets.symmetric(horizontal: 3),
                 child: GestureDetector(
                   onTap: () {
-                    BlocProvider.of<AuthCubit>(context)
-                        .setChossedRateIndex(index);
+                    BlocProvider.of<OneProductCubit>(context)
+                        .setChossedRateIndex(index + 1);
                     setState(() {});
                   },
                   child: RateItem(
                     index: index + 1,
-                    isSelected: BlocProvider.of<AuthCubit>(context)
+                    isSelected: BlocProvider.of<OneProductCubit>(context)
                                 .getChossedRateIndex() ==
                             index
                         ? true
@@ -60,18 +61,18 @@ class _RateProductSheetState extends State<RateProductSheet> {
           children: [
             TextButton(
               onPressed: () async {
-                debugPrint(BlocProvider.of<AuthCubit>(context)
+                debugPrint(BlocProvider.of<OneProductCubit>(context)
                     .getSelectedProductIndex()
                     .toString());
-                if (BlocProvider.of<AuthCubit>(context).getChossedRateIndex() !=
+                if (BlocProvider.of<OneProductCubit>(context)
+                        .getChossedRateIndex() !=
                     -1) {
-                  await BlocProvider.of<AuthCubit>(context).postRate(
+                  await BlocProvider.of<OneProductCubit>(context).postRate(
                     token: BlocProvider.of<AuthCubit>(context).getToken(),
-                    productId: BlocProvider.of<AuthCubit>(context)
+                    productId: BlocProvider.of<OneProductCubit>(context)
                         .getSelectedProductIndex(),
-                    rate: BlocProvider.of<AuthCubit>(context)
-                            .getChossedRateIndex() +
-                        1,
+                    rate: BlocProvider.of<OneProductCubit>(context)
+                        .getChossedRateIndex(),
                   );
 
                   Navigator.pop(context);

@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
 
 import '../../../../core/errors/failures.dart';
 import '../../../../core/utils/api_service.dart';
@@ -19,6 +20,17 @@ abstract class GetProductsRepo {
   Future<Either<Failure, OneProduct>> getOneProductWithDetails({
     required String token,
     required int productId,
+  });
+
+  Future<Either<Failure, Map<String, dynamic>>> postCommentToProduct({
+    required String token,
+    required int productId,
+    required String comment,
+  });
+  Future<Either<Failure, Map<String, dynamic>>> postRateToProduct({
+    required String token,
+    required int productId,
+    required num rate,
   });
 
   Future<Either<Failure, AllOrders>> getAllOrders({
@@ -92,6 +104,53 @@ class GetProductsRepoImpl implements GetProductsRepo {
       return right(data);
     } catch (e) {
       if (e is DioException) {
+        return left(
+          ServerFailure.fromDioException(e),
+        );
+      }
+      return left(ServerFailure("There was an Error: $e"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>>> postCommentToProduct({
+    required String token,
+    required int productId,
+    required String comment,
+  }) async {
+    try {
+      var data = await apiService.commentProduct(
+        productId: productId,
+        comment: comment,
+        token: token,
+      );
+      return right(data);
+    } catch (e) {
+      if (e is DioException) {
+        return left(
+          ServerFailure.fromDioException(e),
+        );
+      }
+      return left(ServerFailure("There was an Error: $e"));
+    }
+  }
+
+  @override
+  Future<Either<Failure, Map<String, dynamic>>> postRateToProduct({
+    required String token,
+    required int productId,
+    required num rate,
+  }) async {
+    try {
+      var data = await apiService.rateProduct(
+        productId: productId,
+        rate: rate,
+        token: token,
+      );
+      return right(data);
+    } catch (e) {
+      if (e is DioException) {
+        debugPrint("123123123 ${e.toString()}");
         return left(
           ServerFailure.fromDioException(e),
         );
