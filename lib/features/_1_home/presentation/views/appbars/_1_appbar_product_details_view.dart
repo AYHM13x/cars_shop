@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../sheets/_0_rate_product_sheet.dart';
+import '../sheets/_1_comment_product_sheet.dart';
 
 class AppBarProductdetailsView extends StatelessWidget {
   const AppBarProductdetailsView({super.key});
@@ -43,7 +44,30 @@ class AppBarProductdetailsView extends StatelessWidget {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                showModalBottomSheet(
+                  isScrollControlled: true,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  backgroundColor: Colors.grey.shade800,
+                  context: context,
+                  builder: (context) {
+                    double keyBoardIsShow =
+                        MediaQuery.of(context).viewInsets.bottom;
+                    return Padding(
+                      padding: EdgeInsets.only(
+                        left: 16.0,
+                        right: 16.0,
+                        bottom: keyBoardIsShow,
+                      ),
+                      child: const SingleChildScrollView(
+                        child: CommentProductSheet(),
+                      ),
+                    );
+                  },
+                );
+              },
               icon: const Icon(
                 Icons.add_comment,
                 size: 28,
