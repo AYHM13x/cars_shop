@@ -23,23 +23,14 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
-        child: BlocProvider(
-          create: (context) => OneProductCubit(
-            getIt.get<GetProductsRepoImpl>(),
-          )..getOneProduct(
-              token: BlocProvider.of<AuthCubit>(context).getToken(),
-              productId:
-                  BlocProvider.of<AuthCubit>(context).getSelectedProductIndex(),
-            ),
-          child: const Padding(
-            padding: EdgeInsets.only(
-              left: 16,
-              right: 16,
-            ),
-            child: ProductDetailsViewBody(),
+        child: Padding(
+          padding: EdgeInsets.only(
+            left: 16,
+            right: 16,
           ),
+          child: ProductDetailsViewBody(),
         ),
       ),
     );
