@@ -41,8 +41,13 @@ class ProductDetailsViewBody extends StatelessWidget {
                 ],
               );
             } else if (state is OneProductLoading) {
-              return const Center(
-                child: Text("Loading"),
+              return WillPopScope(
+                onWillPop: () async {
+                  return false;
+                },
+                child: const Center(
+                  child: Text("Loading"),
+                ),
               );
             } else {
               return const SizedBox();

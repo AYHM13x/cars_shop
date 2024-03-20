@@ -1,6 +1,6 @@
-import 'package:car_shop_app/features/_1_home/data/one_product/one_product.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../data/one_product/one_product.dart';
 import '_4_comment_view.dart';
 
 class ProductCommentsView extends StatelessWidget {

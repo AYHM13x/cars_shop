@@ -16,10 +16,10 @@ class RateItem extends StatelessWidget {
         ? CircleAvatar(
             //selected color circle
             backgroundColor: Colors.yellow,
-            radius: 29,
+            radius: 30,
             child: CircleAvatar(
               backgroundColor: Colors.grey,
-              radius: 25,
+              radius: 29,
               child: Text(
                 index.toString(),
                 textAlign: TextAlign.center,
@@ -32,10 +32,10 @@ class RateItem extends StatelessWidget {
         : CircleAvatar(
             //selected color circle
             backgroundColor: Colors.white,
-            radius: 29,
+            radius: 30,
             child: CircleAvatar(
               backgroundColor: Colors.grey,
-              radius: 25,
+              radius: 29,
               child: Text(
                 index.toString(),
                 textAlign: TextAlign.center,

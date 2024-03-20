@@ -126,6 +126,7 @@ class _LogInViewBodyState extends State<LogInViewBody> {
                       }
                       if (BlocProvider.of<AuthCubit>(context).getToken() !=
                           "") {
+                        FocusManager.instance.primaryFocus!.unfocus();
                         Navigator.pushNamed(
                             context, RouteNamesApp.homeViewRoute);
                       }

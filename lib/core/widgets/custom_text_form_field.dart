@@ -5,11 +5,13 @@ class CustomTextFormField extends StatelessWidget {
     super.key,
     this.hintText,
     this.onChange,
+    this.maxLines = 1,
     this.isPassword = false,
   });
 
   final String? hintText;
   final Function(String)? onChange;
+  final int maxLines;
   final bool isPassword;
 
   @override
@@ -21,6 +23,7 @@ class CustomTextFormField extends StatelessWidget {
         }
         return null;
       },
+      maxLines: maxLines,
       obscureText: isPassword,
       obscuringCharacter: "*",
       style: const TextStyle(

@@ -59,8 +59,13 @@ class ProductsListView extends StatelessWidget {
             ],
           );
         } else {
-          return const Center(
-            child: Text("loading"),
+          return WillPopScope(
+            onWillPop: () async {
+              return false;
+            },
+            child: const Center(
+              child: Text("loading"),
+            ),
           );
         }
       },

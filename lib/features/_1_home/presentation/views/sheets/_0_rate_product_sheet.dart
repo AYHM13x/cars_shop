@@ -16,81 +16,80 @@ class RateProductSheet extends StatefulWidget {
 class _RateProductSheetState extends State<RateProductSheet> {
   @override
   Widget build(BuildContext context) {
-    return Form(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const Gap(16),
-          const Text(
-            "Chose your rate:",
-            style: TextStyle(fontSize: 28),
-          ),
-          const Gap(16),
-          SizedBox(
-            height: DimensionsOfScreen.dimensionsOfHeight(context, 10),
-            child: ListView.builder(
-              itemExtent: 75,
-              scrollDirection: Axis.horizontal,
-              itemCount: 5,
-              padding: EdgeInsets.zero,
-              itemBuilder: (content, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 3),
-                  child: GestureDetector(
-                    onTap: () {
-                      BlocProvider.of<AuthCubit>(context)
-                          .setChossedRateIndex(index);
-                      setState(() {});
-                    },
-                    child: RateItem(
-                      index: index + 1,
-                      isSelected: BlocProvider.of<AuthCubit>(context)
-                                  .getChossedRateIndex() ==
-                              index
-                          ? true
-                          : false,
-                    ),
-                  ),
-                );
-              },
-            ),
-          ),
-          const Gap(16),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              TextButton(
-                onPressed: () async {
-                  debugPrint(BlocProvider.of<AuthCubit>(context)
-                      .getSelectedProductIndex()
-                      .toString());
-                  if (BlocProvider.of<AuthCubit>(context)
-                          .getChossedRateIndex() !=
-                      -1) {
-                    await BlocProvider.of<AuthCubit>(context).postRate(
-                      token: BlocProvider.of<AuthCubit>(context).getToken(),
-                      productId: BlocProvider.of<AuthCubit>(context)
-                          .getSelectedProductIndex(),
-                      rate: BlocProvider.of<AuthCubit>(context)
-                              .getChossedRateIndex() +
-                          1,
-                    );
-                  }
-                },
-                child: const Text(
-                  "Confirm",
-                  style: TextStyle(
-                    // decoration: TextDecoration.underline,
-                    fontSize: 18,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const Gap(16),
+        const Text(
+          "Chose your rate:",
+          style: TextStyle(fontSize: 28),
+        ),
+        const Gap(16),
+        SizedBox(
+          height: DimensionsOfScreen.dimensionsOfHeight(context, 10),
+          child: ListView.builder(
+            itemExtent: 75,
+            scrollDirection: Axis.horizontal,
+            itemCount: 5,
+            padding: EdgeInsets.zero,
+            itemBuilder: (content, index) {
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 3),
+                child: GestureDetector(
+                  onTap: () {
+                    BlocProvider.of<AuthCubit>(context)
+                        .setChossedRateIndex(index);
+                    setState(() {});
+                  },
+                  child: RateItem(
+                    index: index + 1,
+                    isSelected: BlocProvider.of<AuthCubit>(context)
+                                .getChossedRateIndex() ==
+                            index
+                        ? true
+                        : false,
                   ),
                 ),
-              ),
-              const Gap(16),
-            ],
+              );
+            },
           ),
-          const Gap(22),
-        ],
-      ),
+        ),
+        const Gap(16),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: [
+            TextButton(
+              onPressed: () async {
+                debugPrint(BlocProvider.of<AuthCubit>(context)
+                    .getSelectedProductIndex()
+                    .toString());
+                if (BlocProvider.of<AuthCubit>(context).getChossedRateIndex() !=
+                    -1) {
+                  await BlocProvider.of<AuthCubit>(context).postRate(
+                    token: BlocProvider.of<AuthCubit>(context).getToken(),
+                    productId: BlocProvider.of<AuthCubit>(context)
+                        .getSelectedProductIndex(),
+                    rate: BlocProvider.of<AuthCubit>(context)
+                            .getChossedRateIndex() +
+                        1,
+                  );
+
+                  Navigator.pop(context);
+                }
+              },
+              child: const Text(
+                "Confirm",
+                style: TextStyle(
+                  // decoration: TextDecoration.underline,
+                  fontSize: 18,
+                ),
+              ),
+            ),
+            const Gap(16),
+          ],
+        ),
+        const Gap(22),
+      ],
     );
   }
 }

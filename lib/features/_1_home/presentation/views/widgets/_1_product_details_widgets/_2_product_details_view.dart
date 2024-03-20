@@ -1,6 +1,7 @@
-import 'package:car_shop_app/features/_1_home/data/one_product/one_product.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+
+import '../../../../data/one_product/one_product.dart';
 
 class ProductDetailsView extends StatelessWidget {
   const ProductDetailsView({super.key, required this.oneProduct});
