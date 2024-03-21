@@ -32,18 +32,6 @@ abstract class GetProductsRepo {
     required int productId,
     required num rate,
   });
-
-  Future<Either<Failure, AllOrders>> getAllOrders({
-    required String token,
-  });
-  Future<Either<Failure, Map<String, dynamic>>> postOrder({
-    required String token,
-    required int productId,
-  });
-  Future<Either<Failure, Map<String, dynamic>>> deleteOrder({
-    required String token,
-    required int orderId,
-  });
 }
 
 class GetProductsRepoImpl implements GetProductsRepo {
@@ -151,65 +139,6 @@ class GetProductsRepoImpl implements GetProductsRepo {
     } catch (e) {
       if (e is DioException) {
         debugPrint("123123123 ${e.toString()}");
-        return left(
-          ServerFailure.fromDioException(e),
-        );
-      }
-      return left(ServerFailure("There was an Error: $e"));
-    }
-  }
-
-  @override
-  Future<Either<Failure, AllOrders>> getAllOrders({
-    required String token,
-  }) async {
-    try {
-      var data = await apiService.getAllOrders(token: token);
-      return right(data);
-    } catch (e) {
-      if (e is DioException) {
-        return left(
-          ServerFailure.fromDioException(e),
-        );
-      }
-      return left(ServerFailure("There was an Error: $e"));
-    }
-  }
-
-  @override
-  Future<Either<Failure, Map<String, dynamic>>> postOrder({
-    required String token,
-    required int productId,
-  }) async {
-    try {
-      var data = await apiService.postOrder(
-        productId: productId,
-        token: token,
-      );
-      return right(data);
-    } catch (e) {
-      if (e is DioException) {
-        return left(
-          ServerFailure.fromDioException(e),
-        );
-      }
-      return left(ServerFailure("There was an Error: $e"));
-    }
-  }
-
-  @override
-  Future<Either<Failure, Map<String, dynamic>>> deleteOrder({
-    required String token,
-    required int orderId,
-  }) async {
-    try {
-      var data = await apiService.deleteOrder(
-        orderId: orderId,
-        token: token,
-      );
-      return right(data);
-    } catch (e) {
-      if (e is DioException) {
         return left(
           ServerFailure.fromDioException(e),
         );

@@ -57,13 +57,14 @@ class _ProductsListViewState extends State<ProductsListView> {
             itemCount: state.allProducts.data!.length,
             itemBuilder: (context, index) {
               return GestureDetector(
-                onTap: () {
+                onTap: () async {
                   BlocProvider.of<OneProductCubit>(context)
                       .setSelectedProductIndex(index + 1);
                   Navigator.pushNamed(
                           context, RouteNamesApp.productDetailsViewRoute)
-                      .then((_) {
-                    BlocProvider.of<ProductsCubit>(context).getAllProducts(
+                      .then((_) async {
+                    await BlocProvider.of<ProductsCubit>(context)
+                        .getAllProducts(
                       token: BlocProvider.of<AuthCubit>(context).getToken(),
                     );
                   });
