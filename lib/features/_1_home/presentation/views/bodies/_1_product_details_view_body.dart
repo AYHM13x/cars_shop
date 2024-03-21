@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/functions/show_snack_bar.dart';
+import '../widgets/loading_views/_1_loading_product_view/_0_loading_product_view.dart';
 import '../../../../_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
 import '../../model_view/one_product_cubit/one_product_cubit.dart';
 import '../appbars/_1_appbar_product_details_view.dart';
@@ -49,12 +50,9 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
             }
           },
           builder: (context, state) {
-            if (state is OneProductSuccess ||
-                state is OneProductSuccessComment ||
-                state is OneProductSuccessRate) {
+            if (state is OneProductSuccess) {
               return ProductView(
-                oneProduct:
-                    BlocProvider.of<OneProductCubit>(context).currentProduct,
+                oneProduct: state.oneProduct,
               );
             } else if (state is OneProductFailure) {
               return Column(
@@ -70,9 +68,7 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
                 onWillPop: () async {
                   return false;
                 },
-                child: const Center(
-                  child: Text("Loading"),
-                ),
+                child: const LoadingProductView(),
               );
             } else {
               return const SizedBox();

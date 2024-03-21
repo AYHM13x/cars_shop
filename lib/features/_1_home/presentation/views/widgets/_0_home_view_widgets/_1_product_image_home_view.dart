@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shimmer/shimmer.dart';
 
 class ProductImageHomeView extends StatelessWidget {
   const ProductImageHomeView({
@@ -7,8 +8,6 @@ class ProductImageHomeView extends StatelessWidget {
   });
 
   final String imageUrl;
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +21,18 @@ class ProductImageHomeView extends StatelessWidget {
           if (loadingProgress == null) {
             return child;
           }
-          return const Center(
-            child: Text("loading"),
+          return Shimmer.fromColors(
+            baseColor: Colors.grey.shade800,
+            highlightColor: Colors.white,
+            child: Center(
+              child: Container(
+                height: 225,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  color: Colors.white,
+                ),
+              ),
+            ),
           );
         },
         errorBuilder: (context, error, stackTrace) {
