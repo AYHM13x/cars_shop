@@ -1,14 +1,20 @@
-import 'package:car_shop_app/core/utils/functions/show_snack_bar.dart';
-import 'package:car_shop_app/features/_1_home/presentation/model_view/one_product_cubit/one_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../../core/utils/functions/show_snack_bar.dart';
+import '../../../../_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
+import '../../model_view/one_product_cubit/one_product_cubit.dart';
 import '../appbars/_1_appbar_product_details_view.dart';
 import '../widgets/_1_product_details_widgets/_0_product_data_view.dart';
 
-class ProductDetailsViewBody extends StatelessWidget {
+class ProductDetailsViewBody extends StatefulWidget {
   const ProductDetailsViewBody({super.key});
 
+  @override
+  State<ProductDetailsViewBody> createState() => _ProductDetailsViewBodyState();
+}
+
+class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -22,14 +28,33 @@ class ProductDetailsViewBody extends StatelessWidget {
               showSnackBar(context, "Loading...");
             } else if (state is OneProductFailure) {
               showSnackBar(context, state.errMessage);
-            } else if (state is OneProductSuccessProduct) {
+            } else if (state is OneProductSuccess) {
               showSnackBar(context, state.oneProduct.message!);
+            } else if (state is OneProductSuccessComment) {
+              BlocProvider.of<OneProductCubit>(context).getOneProduct(
+                token: BlocProvider.of<AuthCubit>(context).getToken(),
+                productId: BlocProvider.of<OneProductCubit>(context)
+                    .getSelectedProductIndex(),
+              );
+              //setState(() {});
+              showSnackBar(context, state.message);
+            } else if (state is OneProductSuccessRate) {
+              BlocProvider.of<OneProductCubit>(context).getOneProduct(
+                token: BlocProvider.of<AuthCubit>(context).getToken(),
+                productId: BlocProvider.of<OneProductCubit>(context)
+                    .getSelectedProductIndex(),
+              );
+              //setState(() {});
+              showSnackBar(context, state.message);
             }
           },
           builder: (context, state) {
-            if (state is OneProductSuccessProduct) {
+            if (state is OneProductSuccess ||
+                state is OneProductSuccessComment ||
+                state is OneProductSuccessRate) {
               return ProductView(
-                oneProduct: state.oneProduct,
+                oneProduct:
+                    BlocProvider.of<OneProductCubit>(context).currentProduct,
               );
             } else if (state is OneProductFailure) {
               return Column(

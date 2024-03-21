@@ -46,7 +46,7 @@ class _RateProductSheetState extends State<RateProductSheet> {
                     index: index + 1,
                     isSelected: BlocProvider.of<OneProductCubit>(context)
                                 .getChossedRateIndex() ==
-                            index
+                            index + 1
                         ? true
                         : false,
                   ),
@@ -61,9 +61,8 @@ class _RateProductSheetState extends State<RateProductSheet> {
           children: [
             TextButton(
               onPressed: () async {
-                debugPrint(BlocProvider.of<OneProductCubit>(context)
-                    .getSelectedProductIndex()
-                    .toString());
+                BlocProvider.of<OneProductCubit>(context)
+                    .setIsLoadingRate(true);
                 if (BlocProvider.of<OneProductCubit>(context)
                         .getChossedRateIndex() !=
                     -1) {
@@ -74,7 +73,12 @@ class _RateProductSheetState extends State<RateProductSheet> {
                     rate: BlocProvider.of<OneProductCubit>(context)
                         .getChossedRateIndex(),
                   );
-
+                  BlocProvider.of<OneProductCubit>(context)
+                      .setIsLoadingRate(false);
+                }
+                // await Future.delayed(const Duration(milliseconds: 1000));
+                if (!BlocProvider.of<OneProductCubit>(context)
+                    .getIsLoadingRate()) {
                   Navigator.pop(context);
                 }
               },

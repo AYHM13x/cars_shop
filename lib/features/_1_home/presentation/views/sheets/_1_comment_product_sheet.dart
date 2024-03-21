@@ -41,12 +41,20 @@ class _CommentProductSheetState extends State<CommentProductSheet> {
               TextButton(
                 onPressed: () async {
                   if (formkey.currentState!.validate()) {
+                    BlocProvider.of<OneProductCubit>(context)
+                        .setIsLoadingComment(true);
                     BlocProvider.of<OneProductCubit>(context).postComment(
                       token: BlocProvider.of<AuthCubit>(context).getToken(),
                       productId: BlocProvider.of<OneProductCubit>(context)
                           .getSelectedProductIndex(),
                       comment: comment,
                     );
+                    BlocProvider.of<OneProductCubit>(context)
+                        .setIsLoadingComment(false);
+                  }
+                  // await Future.delayed(const Duration(milliseconds: 700));
+                  if (!BlocProvider.of<OneProductCubit>(context)
+                      .getIsLoadingComment()) {
                     Navigator.pop(context);
                   }
                 },
