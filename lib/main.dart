@@ -48,17 +48,17 @@ class CarShopApp extends StatelessWidget {
       ],
       child: MaterialApp(
         onGenerateRoute: (settings) {
-          if (settings.name == RouteNamesApp.signUpViewRoute) {
+          if (settings.name == RouteNamesApp.logInViewRoute) {
+            return SlideRight(child: const LogInView());
+          } else if (settings.name == RouteNamesApp.signUpViewRoute) {
             return SlideRight(child: const SignUpView());
-          }
-          if (settings.name == RouteNamesApp.homeViewRoute) {
+          } else if (settings.name == RouteNamesApp.homeViewRoute) {
             return ScaleAnmetion(child: const HomeView());
-          }
-          if (settings.name == RouteNamesApp.productDetailsViewRoute) {
+          } else if (settings.name == RouteNamesApp.productDetailsViewRoute) {
             return ScaleAnmetion(child: const ProductDetailsView());
+          } else {
+            return MaterialPageRoute(builder: (_) => const LogInView());
           }
-          // Unknown route
-          return MaterialPageRoute(builder: (_) => const LogInView());
         },
         theme: ThemeData(brightness: Brightness.dark),
         debugShowCheckedModeBanner: false,
@@ -70,7 +70,7 @@ class CarShopApp extends StatelessWidget {
         //   RouteNamesApp.productDetailsViewRoute: (context) =>
         //       const ProductDetailsView(),
         // },
-        initialRoute: RouteNamesApp.signInViewRoute,
+        initialRoute: RouteNamesApp.logInViewRoute,
       ),
     );
   }
