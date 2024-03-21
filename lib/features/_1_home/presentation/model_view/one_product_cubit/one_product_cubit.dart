@@ -12,13 +12,18 @@ class OneProductCubit extends Cubit<OneProductState> {
   final GetProductsRepo getProductsRepo;
   String _message = "";
   String _token = "";
+  OneProduct currentProduct = OneProduct();
   int _chossedRateIndex = -1;
   int _selectedProductIndex = -1;
+  bool _isLoadingComment = false;
+  bool _isLoadingRate = false;
 
   void initVars() {
     _message = "";
     _token = "";
     _chossedRateIndex = -1;
+    _isLoadingComment = false;
+    _isLoadingRate = false;
   }
 
   String getMesage() => _message;
@@ -36,6 +41,18 @@ class OneProductCubit extends Cubit<OneProductState> {
   }
 
   int getSelectedProductIndex() => _selectedProductIndex;
+
+  void setIsLoadingComment(bool isloading) {
+    _isLoadingComment = isloading;
+  }
+
+  bool getIsLoadingComment() => _isLoadingComment;
+
+  void setIsLoadingRate(bool isloading) {
+    _isLoadingRate = isloading;
+  }
+
+  bool getIsLoadingRate() => _isLoadingRate;
 
   Future<void> getOneProduct({
     required String token,
@@ -56,11 +73,11 @@ class OneProductCubit extends Cubit<OneProductState> {
           ),
         );
       },
-      (getOneproduct) {
-        _message = getOneproduct.message!;
+      (oneProduct) {
+        currentProduct = oneProduct;
         emit(
-          OneProductSuccessProduct(
-            getOneproduct,
+          OneProductSuccess(
+            oneProduct,
           ),
         );
       },
@@ -72,7 +89,7 @@ class OneProductCubit extends Cubit<OneProductState> {
     required int productId,
     required String comment,
   }) async {
-    _message = "";
+    emit(OneProductLoading());
     var result = await getProductsRepo.postCommentToProduct(
       token: token,
       productId: productId,
@@ -90,7 +107,7 @@ class OneProductCubit extends Cubit<OneProductState> {
       (commentMessage) {
         _message = commentMessage["message"]!;
         emit(
-          OneProductSuccessCommentAndRate(
+          OneProductSuccessComment(
             commentMessage["message"],
           ),
         );
@@ -103,6 +120,7 @@ class OneProductCubit extends Cubit<OneProductState> {
     required int productId,
     required num rate,
   }) async {
+    emit(OneProductLoading());
     _message = "";
     var result = await getProductsRepo.postRateToProduct(
       token: token,
@@ -121,7 +139,7 @@ class OneProductCubit extends Cubit<OneProductState> {
       (commentMessage) {
         _message = commentMessage["message"]!;
         emit(
-          OneProductSuccessCommentAndRate(
+          OneProductSuccessRate(
             commentMessage["message"],
           ),
         );

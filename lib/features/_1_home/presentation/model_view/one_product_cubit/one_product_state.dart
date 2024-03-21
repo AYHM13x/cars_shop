@@ -7,16 +7,22 @@ class OneProductInitial extends OneProductState {}
 
 class OneProductLoading extends OneProductState {}
 
-class OneProductSuccessProduct extends OneProductState {
+class OneProductSuccess extends OneProductState {
   final OneProduct oneProduct;
 
-  OneProductSuccessProduct(this.oneProduct);
+  OneProductSuccess(this.oneProduct);
 }
 
-class OneProductSuccessCommentAndRate extends OneProductState {
+class OneProductSuccessComment extends OneProductState {
   final String message;
 
-  OneProductSuccessCommentAndRate(this.message);
+  OneProductSuccessComment(this.message);
+}
+
+class OneProductSuccessRate extends OneProductState {
+  final String message;
+
+  OneProductSuccessRate(this.message);
 }
 
 class OneProductFailure extends OneProductState {
