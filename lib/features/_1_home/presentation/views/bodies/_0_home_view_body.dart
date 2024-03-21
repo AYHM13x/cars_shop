@@ -20,7 +20,7 @@ class HomeViewBody extends StatelessWidget {
           const Gap(8),
           const AppbarHomeView(),
           SizedBox(
-            height: DimensionsOfScreen.dimensionsOfHeight(context, 88),
+            height: DimensionsOfScreen.dimensionsOfHeight(context, 89.5),
             child: const ProductsListView(),
           ),
         ],

@@ -1,16 +1,18 @@
+import 'package:car_shop_app/features/_2_order/data/all_orders/all_orders.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../data/all_orders/oreder_data.dart';
 import '_1_product_image_orders_view.dart';
 import '_2_product_details_orders_view.dart';
 
 class ProductOrdersView extends StatelessWidget {
   const ProductOrdersView({
     super.key,
-    // required this.product,
+    required this.product,
   });
 
-  //final ProductAllProducts product;
+  final OrderData product;
 
   @override
   Widget build(BuildContext context) {
@@ -20,15 +22,19 @@ class ProductOrdersView extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       padding: const EdgeInsets.only(bottom: 8),
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ProductImageOrdersView(),
-          Gap(16),
+          ProductImageOrdersView(
+            imageUrl: product.product!.image!,
+          ),
+          const Gap(16),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: ProductDetailsOrdersView(),
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: ProductDetailsOrdersView(
+              product: product,
+            ),
           ),
         ],
       ),

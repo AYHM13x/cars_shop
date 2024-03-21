@@ -10,6 +10,9 @@ class OrderCubit extends Cubit<OrderState> {
   OrderCubit(this.orderRepo) : super(OrderInitial());
 
   final OrderRepo orderRepo;
+  AllOrders _allOrders = AllOrders();
+
+  AllOrders getCurrentAllOrder() => _allOrders;
 
   Future<void> getAllOrders({
     required String token,
@@ -21,8 +24,9 @@ class OrderCubit extends Cubit<OrderState> {
       (failure) {
         emit(OrderFailure(failure.errMessage));
       },
-      (allOrders) {
-        emit(OrderSuccessGetAllOrders(allOrders));
+      (getAllOrders) {
+        _allOrders = getAllOrders;
+        emit(OrderSuccessGetAllOrders(getAllOrders));
       },
     );
   }

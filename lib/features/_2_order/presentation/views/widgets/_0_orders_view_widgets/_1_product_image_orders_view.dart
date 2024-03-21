@@ -5,10 +5,10 @@ import '../../../../../../core/utils/AsstesApp.dart';
 class ProductImageOrdersView extends StatelessWidget {
   const ProductImageOrdersView({
     super.key,
-    // required this.imageUrl,
+    required this.imageUrl,
   });
 
-  // final String imageUrl;
+  final String imageUrl;
 
   @override
   Widget build(BuildContext context) {
