@@ -1,3 +1,4 @@
+import 'package:car_shop_app/core/utils/route_app/route_names_app.dart';
 import 'package:flutter/material.dart';
 
 class AppbarHomeView extends StatelessWidget {
@@ -14,12 +15,25 @@ class AppbarHomeView extends StatelessWidget {
             fontSize: 24,
           ),
         ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.filter_alt,
-            size: 28,
-          ),
+        Row(
+          children: [
+            IconButton(
+              onPressed: () {
+                Navigator.pushNamed(context, RouteNamesApp.orderViewRoute);
+              },
+              icon: const Icon(
+                Icons.shopping_cart,
+                size: 28,
+              ),
+            ),
+            IconButton(
+              onPressed: () {},
+              icon: const Icon(
+                Icons.filter_alt,
+                size: 28,
+              ),
+            ),
+          ],
         ),
       ],
     );

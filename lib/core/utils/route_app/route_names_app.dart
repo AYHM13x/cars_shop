@@ -3,4 +3,5 @@ class RouteNamesApp {
   static const signUpViewRoute = "SignUpViewRoute";
   static const homeViewRoute = "HomeViewRoute";
   static const productDetailsViewRoute = "ProductDetailsViewRoute";
+  static const orderViewRoute = "OrderViewRoute";
 }

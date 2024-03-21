@@ -14,12 +14,20 @@ class ProductDetailsHomeView extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(product.title!),
+          Text(
+            product.title!,
+            style: const TextStyle(
+              fontSize: 24,
+            ),
+          ),
           const Gap(16),
           Text(
             product.description!,
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontSize: 16,
+            ),
           ),
           const Gap(16),
           Row(

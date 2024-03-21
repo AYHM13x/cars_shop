@@ -1,4 +1,7 @@
+import 'package:car_shop_app/core/utils/route_app/slide_left_animetion.dart';
 import 'package:car_shop_app/features/_1_home/presentation/model_view/products_cubit/products_cubit.dart';
+import 'package:car_shop_app/features/_2_order/data/order_repo.dart';
+import 'package:car_shop_app/features/_2_order/presentation/model_view/order_cubit/order_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,6 +18,7 @@ import 'features/_1_home/data/repo/get_data_repo.dart';
 import 'features/_1_home/presentation/model_view/one_product_cubit/one_product_cubit.dart';
 import 'features/_1_home/presentation/views/_0_home_view.dart';
 import 'features/_1_home/presentation/views/_1_product_details_view.dart';
+import 'features/_2_order/presentation/views/order_view.dart';
 
 void main() {
   Bloc.observer = SimpleBlocObserver();
@@ -44,18 +48,23 @@ class CarShopApp extends StatelessWidget {
           create: (context) => OneProductCubit(
             getIt.get<GetProductsRepoImpl>(),
           ),
-        )
+        ),
+        BlocProvider(
+          create: (context) => OrderCubit(
+            getIt.get<OrderRepoImp>(),
+          ),
+        ),
       ],
       child: MaterialApp(
         onGenerateRoute: (settings) {
-          if (settings.name == RouteNamesApp.logInViewRoute) {
-            return SlideRight(child: const LogInView());
-          } else if (settings.name == RouteNamesApp.signUpViewRoute) {
+          if (settings.name == RouteNamesApp.signUpViewRoute) {
             return SlideRight(child: const SignUpView());
           } else if (settings.name == RouteNamesApp.homeViewRoute) {
             return ScaleAnmetion(child: const HomeView());
           } else if (settings.name == RouteNamesApp.productDetailsViewRoute) {
             return ScaleAnmetion(child: const ProductDetailsView());
+          } else if (settings.name == RouteNamesApp.orderViewRoute) {
+            return SlideLeft(child: const OrderView());
           } else {
             return MaterialPageRoute(builder: (_) => const LogInView());
           }
