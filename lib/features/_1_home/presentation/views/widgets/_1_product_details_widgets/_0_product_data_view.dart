@@ -31,9 +31,9 @@ class ProductView extends StatelessWidget {
         SizedBox(
           height: responciveHeight(context),
           child: BlocListener<OneProductCubit, OneProductState>(
-            listener: (context, state) {
+            listener: (context, state) async {
               if (state is OneProductSuccessComment) {
-                BlocProvider.of<OneProductCubit>(context).getOneProduct(
+                await BlocProvider.of<OneProductCubit>(context).getOneProduct(
                   token: BlocProvider.of<AuthCubit>(context).getToken(),
                   productId: BlocProvider.of<OneProductCubit>(context)
                       .getSelectedProductIndex(),

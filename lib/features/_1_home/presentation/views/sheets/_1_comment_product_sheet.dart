@@ -43,7 +43,7 @@ class _CommentProductSheetState extends State<CommentProductSheet> {
                   if (formkey.currentState!.validate()) {
                     BlocProvider.of<OneProductCubit>(context)
                         .setIsLoadingComment(true);
-                    BlocProvider.of<OneProductCubit>(context).postComment(
+                    await BlocProvider.of<OneProductCubit>(context).postComment(
                       token: BlocProvider.of<AuthCubit>(context).getToken(),
                       productId: BlocProvider.of<OneProductCubit>(context)
                           .getSelectedProductIndex(),

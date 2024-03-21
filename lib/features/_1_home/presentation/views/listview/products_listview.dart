@@ -18,9 +18,9 @@ class ProductsListView extends StatefulWidget {
 
 class _ProductsListViewState extends State<ProductsListView> {
   @override
-  void initState() {
+  void initState() async {
     super.initState();
-    BlocProvider.of<ProductsCubit>(context).getAllProducts(
+    await BlocProvider.of<ProductsCubit>(context).getAllProducts(
       token: BlocProvider.of<AuthCubit>(context).getToken(),
     );
   }

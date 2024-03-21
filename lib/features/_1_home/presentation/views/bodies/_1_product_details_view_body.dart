@@ -32,20 +32,8 @@ class _ProductDetailsViewBodyState extends State<ProductDetailsViewBody> {
             } else if (state is OneProductSuccess) {
               showSnackBar(context, state.oneProduct.message!);
             } else if (state is OneProductSuccessComment) {
-              BlocProvider.of<OneProductCubit>(context).getOneProduct(
-                token: BlocProvider.of<AuthCubit>(context).getToken(),
-                productId: BlocProvider.of<OneProductCubit>(context)
-                    .getSelectedProductIndex(),
-              );
-              //setState(() {});
               showSnackBar(context, state.message);
             } else if (state is OneProductSuccessRate) {
-              BlocProvider.of<OneProductCubit>(context).getOneProduct(
-                token: BlocProvider.of<AuthCubit>(context).getToken(),
-                productId: BlocProvider.of<OneProductCubit>(context)
-                    .getSelectedProductIndex(),
-              );
-              //setState(() {});
               showSnackBar(context, state.message);
             }
           },

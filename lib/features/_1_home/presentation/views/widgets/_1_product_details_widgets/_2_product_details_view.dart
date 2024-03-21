@@ -34,9 +34,9 @@ class ProductDetailsView extends StatelessWidget {
         ),
         const Gap(16),
         BlocListener<OneProductCubit, OneProductState>(
-          listener: (context, state) {
+          listener: (context, state) async {
             if (state is OneProductSuccessRate) {
-              BlocProvider.of<OneProductCubit>(context).getOneProduct(
+              await BlocProvider.of<OneProductCubit>(context).getOneProduct(
                 token: BlocProvider.of<AuthCubit>(context).getToken(),
                 productId: BlocProvider.of<OneProductCubit>(context)
                     .getSelectedProductIndex(),
