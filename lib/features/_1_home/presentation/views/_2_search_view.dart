@@ -7,15 +7,9 @@ class SearchView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double keyBoardIsShow = MediaQuery.of(context).viewInsets.bottom;
-    return Scaffold(
+    return const Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: EdgeInsets.only(
-            bottom: keyBoardIsShow,
-          ),
-          child: const SearchViewBody(),
-        ),
+        child: SearchViewBody(),
       ),
     );
   }

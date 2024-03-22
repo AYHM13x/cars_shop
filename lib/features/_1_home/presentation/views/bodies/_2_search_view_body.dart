@@ -49,10 +49,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
             ),
           ],
         ),
-        SizedBox(
-          height: DimensionsOfScreen.dimensionsOfHeight(context, 81.2),
-          child: const SearchProductsListView(),
-        ),
+        const SearchProductsListView(),
       ],
     );
   }
