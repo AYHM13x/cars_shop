@@ -37,30 +37,32 @@ class _ProductsListViewState extends State<ProductsListView> {
       },
       builder: (context, state) {
         if (state is ProductsSuccessGetAllProducts) {
-          return ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: state.allProducts.data!.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () async {
-                  BlocProvider.of<OneProductCubit>(context)
-                      .setSelectedProductIndex(index + 1);
-                  Navigator.pushNamed(
-                          context, RouteNamesApp.productDetailsViewRoute)
-                      .then((_) async {
-                    await BlocProvider.of<ProductsCubit>(context)
-                        .getAllProducts(
-                      token: BlocProvider.of<AuthCubit>(context).getToken(),
-                    );
-                  });
-                },
-                child: Padding(
-                  padding: const EdgeInsets.only(bottom: 8.0),
-                  child:
-                      ProductHomeView(product: state.allProducts.data![index]),
-                ),
-              );
-            },
+          return Expanded(
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: state.allProducts.data!.length,
+              itemBuilder: (context, index) {
+                return GestureDetector(
+                  onTap: () async {
+                    BlocProvider.of<OneProductCubit>(context)
+                        .setSelectedProductIndex(index + 1);
+                    Navigator.pushNamed(
+                            context, RouteNamesApp.productDetailsViewRoute)
+                        .then((_) async {
+                      await BlocProvider.of<ProductsCubit>(context)
+                          .getAllProducts(
+                        token: BlocProvider.of<AuthCubit>(context).getToken(),
+                      );
+                    });
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 8.0),
+                    child: ProductHomeView(
+                        product: state.allProducts.data![index]),
+                  ),
+                );
+              },
+            ),
           );
         } else if (state is ProductsFailure) {
           return Column(
@@ -84,15 +86,17 @@ class _ProductsListViewState extends State<ProductsListView> {
             onWillPop: () async {
               return false;
             },
-            child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return const Padding(
-                  padding: EdgeInsets.only(bottom: 8),
-                  child: LoadingProductHomeView(),
-                );
-              },
+            child: Expanded(
+              child: ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return const Padding(
+                    padding: EdgeInsets.only(bottom: 8),
+                    child: LoadingProductHomeView(),
+                  );
+                },
+              ),
             ),
           );
         }

@@ -1,4 +1,3 @@
-import 'package:car_shop_app/core/utils/dimensions_of_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -10,19 +9,17 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(
+    return const Padding(
+      padding: EdgeInsets.only(
         left: 16,
         right: 16,
       ),
       child: Column(
         children: [
-          const Gap(8),
-          const AppbarHomeView(),
-          SizedBox(
-            height: DimensionsOfScreen.dimensionsOfHeight(context, 89.5),
-            child: const ProductsListView(),
-          ),
+          Gap(8),
+          AppbarHomeView(),
+          Gap(8),
+          ProductsListView(),
         ],
       ),
     );

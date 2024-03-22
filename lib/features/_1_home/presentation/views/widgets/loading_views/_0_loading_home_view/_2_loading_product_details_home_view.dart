@@ -6,30 +6,28 @@ class LoadingProductDetailsHomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: 13,
-            width: 100,
-            color: Colors.white,
-          ),
-          const Gap(16),
-          Container(
-            height: 60,
-            color: Colors.white,
-          ),
-          const Gap(16),
-          const Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("comments: ??"),
-              Text("rate: ?.??"),
-            ],
-          )
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          height: 13,
+          width: 100,
+          color: Colors.white,
+        ),
+        const Gap(16),
+        Container(
+          height: 60,
+          color: Colors.white,
+        ),
+        const Gap(16),
+        const Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("comments: ??"),
+            Text("rate: ?.??"),
+          ],
+        )
+      ],
     );
   }
 }

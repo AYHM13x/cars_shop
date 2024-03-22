@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 import '../../../../../../core/utils/dimensions_of_screen.dart';
 import '../../../../data/one_product/one_product.dart';
@@ -20,17 +21,17 @@ class ProductView extends StatelessWidget {
         ProductImageDetailsView(
           imageUrl: oneProduct.data!.image!,
         ),
-        const SizedBox(height: 16),
+        const Gap(16),
         ProductDetailsView(
           oneProduct: oneProduct,
         ),
-        const SizedBox(height: 16),
-        SizedBox(
-          height: responciveHeight(context),
-          child: ProductCommentsView(
-            oneProduct: oneProduct,
-          ),
-        ),
+        const Gap(16),
+        // SizedBox(
+        //   height: responciveHeight(context),
+        //   child: ProductCommentsView(
+        //     oneProduct: oneProduct,
+        //   ),
+        // ),
       ],
     );
   }

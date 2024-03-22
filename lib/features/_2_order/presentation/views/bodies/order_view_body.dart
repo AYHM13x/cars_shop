@@ -1,11 +1,10 @@
-import 'package:car_shop_app/core/utils/dimensions_of_screen.dart';
-import 'package:car_shop_app/core/utils/functions/show_snack_bar.dart';
-import 'package:car_shop_app/features/_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
-import 'package:car_shop_app/features/_2_order/presentation/model_view/order_cubit/order_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../core/utils/functions/show_snack_bar.dart';
+import '../../../../_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
+import '../../model_view/order_cubit/order_cubit.dart';
 import '../appbars/appbar_order_view.dart';
 import '../listViews/orders_listview.dart';
 
@@ -37,8 +36,7 @@ class _OrderViewBodyState extends State<OrderViewBody> {
           const Gap(16),
           const AppbarOrderView(),
           const Gap(16),
-          SizedBox(
-            height: DimensionsOfScreen.dimensionsOfHeight(context, 89.5),
+          Expanded(
             child: BlocConsumer<OrderCubit, OrderState>(
               listener: (context, state) async {
                 if (state is OrderLoading) {

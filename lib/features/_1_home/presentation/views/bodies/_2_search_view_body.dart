@@ -49,6 +49,7 @@ class _SearchViewBodyState extends State<SearchViewBody> {
             ),
           ],
         ),
+        const Gap(16),
         const SearchProductsListView(),
       ],
     );

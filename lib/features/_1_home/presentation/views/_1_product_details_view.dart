@@ -32,7 +32,7 @@ class _ProductDetailsViewState extends State<ProductDetailsView> {
             left: 16,
             right: 16,
           ),
-          child: ProductDetailsViewBody(),
+          child: ProductDetailsViewBodyTow(),
         ),
       ),
     );

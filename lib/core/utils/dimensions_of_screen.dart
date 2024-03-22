@@ -20,7 +20,7 @@ double responciveHeight(BuildContext context) {
   if (DimensionsOfScreen.getScreenRatio(context) == 1.75) {
     return DimensionsOfScreen.dimensionsOfHeight(context, 29.9);
   } else if (DimensionsOfScreen.getScreenRatio(context) == 2.75) {
-    return DimensionsOfScreen.dimensionsOfHeight(context, 44.1);
+    return DimensionsOfScreen.dimensionsOfHeight(context, 43);
   } else {
     return DimensionsOfScreen.dimensionsOfHeight(context, 44.9);
   }

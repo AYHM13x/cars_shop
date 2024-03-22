@@ -16,44 +16,42 @@ class ProductDetailsOrdersView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                product.product!.title!,
-                style: const TextStyle(
-                  fontSize: 24,
-                ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              product.product!.title!,
+              style: const TextStyle(
+                fontSize: 24,
               ),
-              IconButton(
-                onPressed: () async {
-                  await BlocProvider.of<OrderCubit>(context).delOrder(
-                    token: BlocProvider.of<AuthCubit>(context).getToken(),
-                    orderId: product.id!,
-                  );
-                },
-                icon: const Icon(
-                  Icons.delete,
-                  size: 26,
-                ),
-              )
-            ],
-          ),
-          const Gap(16),
-          Text(
-            product.product!.description!,
-            maxLines: 3,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontSize: 16,
             ),
+            IconButton(
+              onPressed: () async {
+                await BlocProvider.of<OrderCubit>(context).delOrder(
+                  token: BlocProvider.of<AuthCubit>(context).getToken(),
+                  orderId: product.id!,
+                );
+              },
+              icon: const Icon(
+                Icons.delete,
+                size: 26,
+              ),
+            )
+          ],
+        ),
+        const Gap(16),
+        Text(
+          product.product!.description!,
+          maxLines: 3,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+            fontSize: 16,
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:shimmer/shimmer.dart';
 
 import '../../../../../../../core/utils/dimensions_of_screen.dart';
@@ -19,9 +20,9 @@ class LoadingProductView extends StatelessWidget {
         //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const LoadingProductImageView(),
-          const SizedBox(height: 16),
+          const Gap(16),
           const LoadingProductDetailsView(),
-          const SizedBox(height: 16),
+          const Gap(16),
           SizedBox(
             height: responciveHeight(context),
             child: const LoadingProductCommnetView(),
