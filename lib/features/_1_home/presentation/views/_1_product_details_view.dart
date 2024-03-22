@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
-import '../model_view/one_product_cubit/one_product_cubit.dart';
+import '../model_view/_1_one_product_cubit/one_product_cubit.dart';
 import 'bodies/_1_product_details_view_body.dart';
 
 class ProductDetailsView extends StatefulWidget {

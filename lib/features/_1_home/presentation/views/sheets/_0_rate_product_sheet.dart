@@ -1,10 +1,10 @@
-import 'package:car_shop_app/features/_1_home/presentation/model_view/one_product_cubit/one_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../../core/utils/dimensions_of_screen.dart';
 import '../../../../_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
+import '../../model_view/_1_one_product_cubit/one_product_cubit.dart';
 import '../widgets/_2_sheet_items/rate_item.dart';
 
 class RateProductSheet extends StatefulWidget {

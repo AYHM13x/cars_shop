@@ -7,6 +7,9 @@ void showSnackBar(BuildContext context, String message) {
         message,
         textAlign: TextAlign.center,
       ),
+      duration: const Duration(
+        milliseconds: 1000,
+      ),
     ),
   );
 }

@@ -1,7 +1,4 @@
-import 'package:car_shop_app/features/_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
-import 'package:car_shop_app/features/_1_home/presentation/model_view/one_product_cubit/one_product_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
 import '../../../../data/one_product/one_product.dart';
@@ -33,20 +30,9 @@ class ProductDetailsView extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const Gap(16),
-        BlocListener<OneProductCubit, OneProductState>(
-          listener: (context, state) async {
-            if (state is OneProductSuccessRate) {
-              await BlocProvider.of<OneProductCubit>(context).getOneProduct(
-                token: BlocProvider.of<AuthCubit>(context).getToken(),
-                productId: BlocProvider.of<OneProductCubit>(context)
-                    .getSelectedProductIndex(),
-              );
-            }
-          },
-          child: Text(
-            "rate: ${oneProduct.data!.rate!.toStringAsPrecision(3)}",
-            style: const TextStyle(fontSize: 16),
-          ),
+        Text(
+          "rate: ${oneProduct.data!.rate!.toStringAsPrecision(3)}",
+          style: const TextStyle(fontSize: 16),
         ),
       ],
     );

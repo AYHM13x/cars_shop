@@ -12,7 +12,8 @@ class OneProductCubit extends Cubit<OneProductState> {
   final GetProductsRepo getProductsRepo;
   String _message = "";
   String _token = "";
-  OneProduct currentProduct = OneProduct();
+  OneProduct _currentProduct = OneProduct();
+
   int _chossedRateIndex = -1;
   int _selectedProductIndex = -1;
   bool _isLoadingComment = false;
@@ -41,6 +42,8 @@ class OneProductCubit extends Cubit<OneProductState> {
   }
 
   int getSelectedProductIndex() => _selectedProductIndex;
+
+  OneProduct getCurrentProduct() => _currentProduct;
 
   void setIsLoadingComment(bool isloading) {
     _isLoadingComment = isloading;
@@ -74,7 +77,7 @@ class OneProductCubit extends Cubit<OneProductState> {
         );
       },
       (oneProduct) {
-        currentProduct = oneProduct;
+        _currentProduct = oneProduct;
         emit(
           OneProductSuccess(
             oneProduct,

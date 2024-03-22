@@ -1,9 +1,9 @@
-import 'package:car_shop_app/features/_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
-import 'package:car_shop_app/features/_1_home/presentation/model_view/one_product_cubit/one_product_cubit.dart';
-import 'package:car_shop_app/features/_2_order/presentation/model_view/order_cubit/order_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
+import '../../../../_2_order/presentation/model_view/order_cubit/order_cubit.dart';
+import '../../model_view/_1_one_product_cubit/one_product_cubit.dart';
 import '../sheets/_0_rate_product_sheet.dart';
 import '../sheets/_1_comment_product_sheet.dart';
 

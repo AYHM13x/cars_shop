@@ -1,9 +1,10 @@
-import 'package:car_shop_app/core/widgets/custom_text_form_field.dart';
-import 'package:car_shop_app/features/_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
-import 'package:car_shop_app/features/_1_home/presentation/model_view/one_product_cubit/one_product_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
+
+import '../../../../../core/widgets/custom_text_form_field.dart';
+import '../../../../_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
+import '../../model_view/_1_one_product_cubit/one_product_cubit.dart';
 
 class CommentProductSheet extends StatefulWidget {
   const CommentProductSheet({super.key});
