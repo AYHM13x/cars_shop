@@ -96,8 +96,10 @@ class ProductsCubit extends Cubit<ProductsState> {
   }
 
   searchProduct(String search) {
-    _productsFilteredProducts =
-        _productsAllProducts.where((s) => s.title!.contains(search)).toList();
+    emit(ProductsLoading());
+    _productsFilteredProducts = _productsAllProducts
+        .where((s) => s.title!.toLowerCase().contains(search.toLowerCase()))
+        .toList();
     emit(ProductsSuccessGetFilteredProducts(_productsFilteredProducts));
   }
 }
