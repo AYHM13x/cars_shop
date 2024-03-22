@@ -27,9 +27,11 @@ class AppbarHomeView extends StatelessWidget {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushNamed(context, RouteNamesApp.searchViewRoute);
+              },
               icon: const Icon(
-                Icons.filter_alt,
+                Icons.search,
                 size: 28,
               ),
             ),

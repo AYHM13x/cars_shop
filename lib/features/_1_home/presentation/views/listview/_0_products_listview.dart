@@ -36,21 +36,6 @@ class _ProductsListViewState extends State<ProductsListView> {
         }
       },
       builder: (context, state) {
-        // return WillPopScope(
-        //   onWillPop: () async {
-        //     return false;
-        //   },
-        //   child: ListView.builder(
-        //     physics: const BouncingScrollPhysics(),
-        //     itemCount: 5,
-        //     itemBuilder: (context, index) {
-        //       return const Padding(
-        //         padding: EdgeInsets.only(bottom: 8),
-        //         child: LoadingProductHomeView(),
-        //       );
-        //     },
-        //   ),
-        // );
         if (state is ProductsSuccessGetAllProducts) {
           return ListView.builder(
             physics: const BouncingScrollPhysics(),

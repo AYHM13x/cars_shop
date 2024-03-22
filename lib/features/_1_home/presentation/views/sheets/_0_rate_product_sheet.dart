@@ -5,7 +5,7 @@ import 'package:gap/gap.dart';
 import '../../../../../core/utils/dimensions_of_screen.dart';
 import '../../../../_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
 import '../../model_view/_1_one_product_cubit/one_product_cubit.dart';
-import '../widgets/_2_sheet_items/rate_item.dart';
+import '../widgets/sheet_items/rate_item.dart';
 
 class RateProductSheet extends StatefulWidget {
   const RateProductSheet({super.key});

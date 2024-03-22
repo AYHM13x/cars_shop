@@ -16,6 +16,7 @@ import 'features/_1_home/presentation/model_view/_0_products_cubit/products_cubi
 import 'features/_1_home/presentation/model_view/_1_one_product_cubit/one_product_cubit.dart';
 import 'features/_1_home/presentation/views/_0_home_view.dart';
 import 'features/_1_home/presentation/views/_1_product_details_view.dart';
+import 'features/_1_home/presentation/views/_2_search_view.dart';
 import 'features/_2_order/data/order_repo.dart';
 import 'features/_2_order/presentation/model_view/order_cubit/order_cubit.dart';
 import 'features/_2_order/presentation/views/order_view.dart';
@@ -65,6 +66,8 @@ class CarShopApp extends StatelessWidget {
             return ScaleAnmetion(child: const ProductDetailsView());
           } else if (settings.name == RouteNamesApp.orderViewRoute) {
             return SlideLeft(child: const OrderView());
+          } else if (settings.name == RouteNamesApp.searchViewRoute) {
+            return SlideRight(child: const SearchView());
           } else {
             return MaterialPageRoute(builder: (_) => const LogInView());
           }
