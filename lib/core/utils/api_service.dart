@@ -82,7 +82,6 @@ class ApiService {
     var response = await _dio.get(
       "$_baseUrl/products",
       options: Options(headers: {
-        "Content-Type": "application/json",
         "Authorization": "Bearer $token",
       }),
     );
@@ -98,7 +97,6 @@ class ApiService {
     var response = await _dio.get(
       "$_baseUrl/products/$productId",
       options: Options(headers: {
-        "Content-Type": "application/json",
         "Authorization": "Bearer $token",
       }),
     );
@@ -114,7 +112,6 @@ class ApiService {
     var response = await _dio.post(
       "$_baseUrl/filter-products?title=$title&rate=$rate",
       options: Options(headers: {
-        "Content-Type": "application/json",
         "Authorization": "Bearer $token",
       }),
       data: [
@@ -142,7 +139,6 @@ class ApiService {
     var response = await _dio.post(
       "$_baseUrl/comment?product_id=$productId&content=$comment",
       options: Options(headers: {
-        "Content-Type": "application/json",
         "Authorization": "Bearer $token",
       }),
       // data: [
@@ -170,45 +166,11 @@ class ApiService {
       "$_baseUrl/rate?product_id=$productId&rate=$rate",
       options: Options(
         headers: {
-          "Content-Type": "application/json",
           "Authorization": "Bearer $token",
         },
       ),
-      // data: [
-      //   {
-      //     "key": "product_id",
-      //     "value": productId,
-      //     "type": "text",
-      //   },
-      //   {
-      //     "key": "content",
-      //     "value": rate,
-      //     "type": "text",
-      //   },
-      // ],
     );
     debugPrint(response.data.toString());
-    return response.data;
-  }
-
-  Future<Map<String, dynamic>> postOrder({
-    required int productId,
-    required String token,
-  }) async {
-    var response = await _dio.post(
-      "$_baseUrl/orders?product_id=$productId",
-      options: Options(headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer $token",
-      }),
-      data: [
-        {
-          "key": "product_id",
-          "value": productId,
-          "type": "text",
-        },
-      ],
-    );
     return response.data;
   }
 
@@ -217,10 +179,27 @@ class ApiService {
   }) async {
     var response = await _dio.get(
       "$_baseUrl/orders",
-      options: Options(headers: {
-        "Content-Type": "application/json",
-        "Authorization": "Bearer $token",
-      }),
+      options: Options(
+        headers: {
+          "Authorization": "Bearer $token",
+        },
+      ),
+    );
+    AllOrders allOrders = AllOrders.fromJson(response.data);
+    return allOrders;
+  }
+
+  Future<Map<String, dynamic>> postOrder({
+    required int productId,
+    required String token,
+  }) async {
+    var response = await _dio.post(
+      "$_baseUrl/orders?product_id=$productId",
+      options: Options(
+        headers: {
+          "Authorization": "Bearer $token",
+        },
+      ),
     );
     return response.data;
   }
@@ -229,10 +208,9 @@ class ApiService {
     required int orderId,
     required String token,
   }) async {
-    var response = await _dio.post(
+    var response = await _dio.delete(
       "$_baseUrl/orders/$orderId",
       options: Options(headers: {
-        "Content-Type": "application/json",
         "Authorization": "Bearer $token",
       }),
     );

@@ -1,11 +1,10 @@
-import 'package:car_shop_app/features/_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
-import 'package:car_shop_app/features/_2_order/data/all_orders/all_orders.dart';
-import 'package:car_shop_app/features/_2_order/presentation/model_view/order_cubit/order_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
 
+import '../../../../../_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
 import '../../../../data/all_orders/oreder_data.dart';
+import '../../../model_view/order_cubit/order_cubit.dart';
 
 class ProductDetailsOrdersView extends StatelessWidget {
   const ProductDetailsOrdersView({
@@ -32,7 +31,7 @@ class ProductDetailsOrdersView extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () async {
-                  BlocProvider.of<OrderCubit>(context).delOrder(
+                  await BlocProvider.of<OrderCubit>(context).delOrder(
                     token: BlocProvider.of<AuthCubit>(context).getToken(),
                     orderId: product.id!,
                   );

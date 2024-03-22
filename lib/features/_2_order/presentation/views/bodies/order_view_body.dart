@@ -40,7 +40,7 @@ class _OrderViewBodyState extends State<OrderViewBody> {
           SizedBox(
             height: DimensionsOfScreen.dimensionsOfHeight(context, 89.5),
             child: BlocConsumer<OrderCubit, OrderState>(
-              listener: (context, state) {
+              listener: (context, state) async {
                 if (state is OrderLoading) {
                   showSnackBar(context, "Loading...");
                 }
@@ -48,9 +48,14 @@ class _OrderViewBodyState extends State<OrderViewBody> {
                   showSnackBar(context, state.errMessage);
                 }
                 if (state is OrderSuccessGetAllOrders) {
-                  showSnackBar(context, state.allOrders.message!);
+                  if (state.allOrders.data!.isNotEmpty) {
+                    showSnackBar(context, state.allOrders.message!);
+                  }
                 }
                 if (state is OrderSuccessDeleteOrder) {
+                  await BlocProvider.of<OrderCubit>(context).getAllOrders(
+                    token: BlocProvider.of<AuthCubit>(context).getToken(),
+                  );
                   showSnackBar(context, state.message);
                 }
                 if (state is OrderSuccessPostOrder) {
@@ -59,7 +64,6 @@ class _OrderViewBodyState extends State<OrderViewBody> {
               },
               builder: (context, state) {
                 if (state is OrderSuccessGetAllOrders ||
-                    state is OrderSuccessPostOrder ||
                     state is OrderSuccessDeleteOrder) {
                   return OrdersListView(
                     allOrders: BlocProvider.of<OrderCubit>(context)

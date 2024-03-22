@@ -71,7 +71,7 @@ class OrderCubit extends Cubit<OrderState> {
       },
       (delOrder) {
         emit(
-          OrderSuccessPostOrder(
+          OrderSuccessDeleteOrder(
             delOrder["message"],
           ),
         );

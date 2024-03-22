@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../core/utils/functions/show_snack_bar.dart';
 import '../widgets/loading_views/_1_loading_product_view/_0_loading_product_view.dart';
-import '../../../../_0_auth/presentation/model_view/auth_cubit/auth_cubit.dart';
 import '../../model_view/one_product_cubit/one_product_cubit.dart';
 import '../appbars/_1_appbar_product_details_view.dart';
 import '../widgets/_1_product_details_widgets/_0_product_data_view.dart';
