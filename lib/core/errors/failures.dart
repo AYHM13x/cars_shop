@@ -1,5 +1,6 @@
-import 'package:car_shop_app/core/errors/failure_response/failure_resgister_response.dart';
 import 'package:dio/dio.dart';
+
+import 'failure_response/failure_resgister_response.dart';
 
 abstract class Failure {
   final String errMessage;

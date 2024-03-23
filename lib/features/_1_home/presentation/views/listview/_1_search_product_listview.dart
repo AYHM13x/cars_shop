@@ -14,17 +14,17 @@ class SearchProductsListView extends StatefulWidget {
 class _SearchProductsListViewState extends State<SearchProductsListView> {
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ProductsCubit, ProductsState>(
-      listener: (context, state) {
-        if (state is ProductsSuccessGetFilteredProducts) {
-          setState(() {});
-          //showSnackBar(context, "search done");
-        }
-      },
-      builder: (context, state) {
-        if (state is ProductsSuccessGetFilteredProducts) {
-          return Expanded(
-            child: ListView.builder(
+    return Expanded(
+      child: BlocConsumer<ProductsCubit, ProductsState>(
+        listener: (context, state) {
+          // if (state is ProductsSuccessGetFilteredProducts) {
+          //   setState(() {});
+          //   //showSnackBar(context, "search done");
+          // }
+        },
+        builder: (context, state) {
+          if (state is ProductsSuccessGetFilteredProducts) {
+            return ListView.builder(
               physics: const BouncingScrollPhysics(),
               itemCount: state.filteredProducts.length,
               itemBuilder: (context, index) {
@@ -46,18 +46,18 @@ class _SearchProductsListViewState extends State<SearchProductsListView> {
                   ),
                 );
               },
-            ),
-          );
-        } else if (state is ProductsLoading) {
-          return const Center(
-            child: Text("Loading"),
-          );
-        } else {
-          return const Center(
-            child: Text("enter your search"),
-          );
-        }
-      },
+            );
+          } else if (state is ProductsLoading) {
+            return const Center(
+              child: Text("Loading"),
+            );
+          } else {
+            return const Center(
+              child: Text("enter your search"),
+            );
+          }
+        },
+      ),
     );
   }
 }

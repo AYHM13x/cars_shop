@@ -1,6 +1,7 @@
-import 'package:car_shop_app/core/utils/AsstesApp.dart';
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
+
+import '../../../../../../core/utils/AsstesApp.dart';
 
 class ProductImageDetailsView extends StatelessWidget {
   const ProductImageDetailsView({super.key, required this.imageUrl});

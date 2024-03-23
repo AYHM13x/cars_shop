@@ -21,7 +21,7 @@ class ProductDetailsView extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
-        const Gap(16),
+        const Gap(8),
         Text(
           oneProduct.data!.description!,
           style: const TextStyle(
@@ -29,7 +29,7 @@ class ProductDetailsView extends StatelessWidget {
           ),
           textAlign: TextAlign.center,
         ),
-        const Gap(16),
+        const Gap(8),
         Text(
           "rate: ${oneProduct.data!.rate!.toStringAsPrecision(3)}",
           style: const TextStyle(fontSize: 16),

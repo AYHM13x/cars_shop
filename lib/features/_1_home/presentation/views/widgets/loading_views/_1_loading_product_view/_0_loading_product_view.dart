@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:shimmer/shimmer.dart';
 
-import '../../../../../../../core/utils/dimensions_of_screen.dart';
 import '_1_loading_product_image_view.dart';
 import '_2_loading_product_details_view.dart';
-import '_3_loading_product_comment_view.dart';
 
 class LoadingProductView extends StatelessWidget {
   const LoadingProductView({super.key});
@@ -15,18 +13,14 @@ class LoadingProductView extends StatelessWidget {
     return Shimmer.fromColors(
       baseColor: Colors.grey.shade800,
       highlightColor: Colors.white,
-      child: Column(
+      child: const Column(
         mainAxisAlignment: MainAxisAlignment.start,
         //crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const LoadingProductImageView(),
-          const Gap(16),
-          const LoadingProductDetailsView(),
-          const Gap(16),
-          SizedBox(
-            height: responciveHeight(context),
-            child: const LoadingProductCommnetView(),
-          ),
+          LoadingProductImageView(),
+          Gap(8),
+          LoadingProductDetailsView(),
+          Gap(8),
         ],
       ),
     );

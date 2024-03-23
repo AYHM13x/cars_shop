@@ -20,12 +20,12 @@ class _RateProductSheetState extends State<RateProductSheet> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Gap(16),
+        const Gap(8),
         const Text(
           "Chose your rate:",
           style: TextStyle(fontSize: 28),
         ),
-        const Gap(16),
+        const Gap(8),
         SizedBox(
           height: DimensionsOfScreen.dimensionsOfHeight(context, 10),
           child: ListView.builder(
@@ -55,7 +55,7 @@ class _RateProductSheetState extends State<RateProductSheet> {
             },
           ),
         ),
-        const Gap(16),
+        const Gap(8),
         Row(
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
@@ -90,7 +90,7 @@ class _RateProductSheetState extends State<RateProductSheet> {
                 ),
               ),
             ),
-            const Gap(16),
+            const Gap(8),
           ],
         ),
         const Gap(22),

@@ -19,7 +19,7 @@ class ProductDetailsHomeView extends StatelessWidget {
             fontSize: 24,
           ),
         ),
-        const Gap(16),
+        const Gap(8),
         Text(
           product.description!,
           maxLines: 3,
@@ -28,7 +28,7 @@ class ProductDetailsHomeView extends StatelessWidget {
             fontSize: 16,
           ),
         ),
-        const Gap(16),
+        const Gap(8),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

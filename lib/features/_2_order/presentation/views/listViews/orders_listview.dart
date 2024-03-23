@@ -1,6 +1,6 @@
-import 'package:car_shop_app/features/_2_order/data/all_orders/all_orders.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/all_orders/all_orders.dart';
 import '../widgets/_0_orders_view_widgets/_0_produc_orders_view.dart';
 
 class OrdersListView extends StatelessWidget {

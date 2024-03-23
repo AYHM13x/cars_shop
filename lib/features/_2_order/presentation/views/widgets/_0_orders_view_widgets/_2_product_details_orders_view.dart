@@ -42,7 +42,7 @@ class ProductDetailsOrdersView extends StatelessWidget {
             )
           ],
         ),
-        const Gap(16),
+        const Gap(8),
         Text(
           product.product!.description!,
           maxLines: 3,

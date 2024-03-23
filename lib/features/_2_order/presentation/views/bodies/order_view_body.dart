@@ -33,9 +33,9 @@ class _OrderViewBodyState extends State<OrderViewBody> {
       ),
       child: Column(
         children: [
-          const Gap(16),
+          const Gap(8),
           const AppbarOrderView(),
-          const Gap(16),
+          const Gap(8),
           Expanded(
             child: BlocConsumer<OrderCubit, OrderState>(
               listener: (context, state) async {

@@ -15,12 +15,12 @@ class LoadingProductDetailsView extends StatelessWidget {
           height: 25,
           color: Colors.white,
         ),
-        const Gap(16),
+        const Gap(8),
         Container(
           height: 75,
           color: Colors.white,
         ),
-        const Gap(16),
+        const Gap(8),
         const Text(
           "rate: ?.??",
           style: TextStyle(fontSize: 16),

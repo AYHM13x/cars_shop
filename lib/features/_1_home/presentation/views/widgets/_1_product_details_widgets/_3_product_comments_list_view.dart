@@ -12,7 +12,7 @@ class ProductCommentsView extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      physics: const BouncingScrollPhysics(),
+      physics: const NeverScrollableScrollPhysics(),
       padding: EdgeInsets.zero,
       itemCount: oneProduct.data!.comments!.length,
       itemBuilder: (context, index) {

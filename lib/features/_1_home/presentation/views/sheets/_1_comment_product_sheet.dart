@@ -25,9 +25,9 @@ class _CommentProductSheetState extends State<CommentProductSheet> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Gap(16),
+          const Gap(8),
           const Text("Add Comment"),
-          const Gap(16),
+          const Gap(8),
           CustomTextFormField(
             hintText: "Your Comment",
             maxLines: 5,
@@ -35,7 +35,7 @@ class _CommentProductSheetState extends State<CommentProductSheet> {
               comment = data;
             },
           ),
-          const Gap(16),
+          const Gap(8),
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
@@ -67,7 +67,7 @@ class _CommentProductSheetState extends State<CommentProductSheet> {
                   ),
                 ),
               ),
-              const Gap(16),
+              const Gap(8),
             ],
           ),
         ],

@@ -24,7 +24,7 @@ class LoadingProductHomeView extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             LoadingProductImageHomeView(),
-            Gap(16),
+            Gap(8),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 8),
               child: LoadingProductDetailsHomeView(),

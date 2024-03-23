@@ -14,12 +14,12 @@ class LoadingProductDetailsHomeView extends StatelessWidget {
           width: 100,
           color: Colors.white,
         ),
-        const Gap(16),
+        const Gap(8),
         Container(
           height: 60,
           color: Colors.white,
         ),
-        const Gap(16),
+        const Gap(8),
         const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [

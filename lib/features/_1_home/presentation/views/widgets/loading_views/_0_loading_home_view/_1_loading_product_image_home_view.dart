@@ -1,5 +1,6 @@
-import 'package:car_shop_app/core/utils/AsstesApp.dart';
 import 'package:flutter/material.dart';
+
+import '../../../../../../../core/utils/AsstesApp.dart';
 
 class LoadingProductImageHomeView extends StatelessWidget {
   const LoadingProductImageHomeView({super.key});

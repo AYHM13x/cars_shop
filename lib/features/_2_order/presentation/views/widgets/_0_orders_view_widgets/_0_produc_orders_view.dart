@@ -28,7 +28,7 @@ class ProductOrdersView extends StatelessWidget {
           ProductImageOrdersView(
             imageUrl: product.product!.image!,
           ),
-          const Gap(16),
+          const Gap(8),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: ProductDetailsOrdersView(
